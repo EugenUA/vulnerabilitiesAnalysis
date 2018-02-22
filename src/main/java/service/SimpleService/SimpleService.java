@@ -4,38 +4,40 @@ package service.SimpleService;
 import dao.*;
 import dao.SQLiteWorkingPackage.*;
 import dao.interfaces.*;
-import entities.dbEntities.User;
-import entities.dbEntities.Vulnerability;
+import entities.dbEntities.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import service.ServiceException;
+
+import java.util.List;
 
 public class SimpleService implements Service {
 
     private static final Logger logger = LogManager.getLogger(SimpleService.class);
     private UserDAO userDAO;
     private VulnerabilityDAO vulnerabilityDAO;
-    /*private DescriptionDAO descriptionDAO;
+    private DescriptionDAO descriptionDAO;
     private ProductDAO productDAO;
-    private VulProdDAO vulProdDAO;*/
+    private VulProdDAO vulProdDAO;
+    private VulnerabilitiesSourcesDAO vulnerabilitiesSourcesDAO;
 
     public SimpleService() throws ServiceException {
         try{
             this.userDAO = new SQLiteUserDAO();
             this.vulnerabilityDAO = new SQLiteVulnerabilityDAO();
-            /*this.descriptionDAO = new SQLiteDescriptionDAO();
+            this.descriptionDAO = new SQLiteDescriptionDAO();
             this.productDAO = new SQLiteProductDAO();
-            this.vulProdDAO = new SQLiteVulProdDAO();*/
+            this.vulProdDAO = new SQLiteVulProdDAO();
+            this.vulnerabilitiesSourcesDAO = new SQLiteVulnerabilitiesSourcesDAO();
         } catch(DAOException e){
             throw new ServiceException(e.getMessage());
         }
         //logger.info("Service started");
     }
 
-
     /* ---------------------------------------------- USER ---------------------------------------------------------- */
 
-
+    @Override
     public User createUser(User user) throws ServiceException{
         //logger.debug("Entering create user method");
         try{
@@ -45,6 +47,7 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
     public User selectUser(String name, String password) throws ServiceException{
         //logger.debug("Entering select user method");
         try{
@@ -54,6 +57,7 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
     public User updateName(User user, String name) throws ServiceException{
         try{
             return userDAO.updateName(user, name);
@@ -62,6 +66,7 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
     public User updateEmail(User user, String email) throws ServiceException{
         try{
             return userDAO.updateEmail(user, email);
@@ -70,6 +75,7 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
     public User updatePassword(User user, String password) throws ServiceException{
         try{
             return userDAO.updatePassword(user, password);
@@ -78,6 +84,7 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
     public User deleteAccount(User user) throws ServiceException{
         try{
             return userDAO.deleteAccount(user);
@@ -86,6 +93,7 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
     public User ifUserIsUnique(User inputUser) throws ServiceException{
         try{
             return userDAO.ifUserIsUnique(inputUser);
@@ -97,6 +105,7 @@ public class SimpleService implements Service {
 
     /* --------------------------------- VULNERABILITY -------------------------------------------------------------- */
 
+    @Override
     public Vulnerability createVulnerability(Vulnerability vulnerability) throws ServiceException{
         try{
             return vulnerabilityDAO.createVulnerability(vulnerability);
@@ -105,30 +114,184 @@ public class SimpleService implements Service {
         }
     }
 
+    @Override
+    public Vulnerability updateVulnerability(Vulnerability vulnerability) throws ServiceException{
+        try {
+            return vulnerabilityDAO.updateVulnerability(vulnerability);
+        } catch (DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
 
-    /* ------------------------------------ DESCRIPTION ------------------------------------------------------------- */
-   /* public Description createDescription(Description description) throws ServiceException{
-        try{
+    @Override
+    public Vulnerability getVulnerabilityByName(String name) throws ServiceException{
+        try {
+            return vulnerabilityDAO.getVulnerabilityByName(name);
+        } catch (DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Vulnerability getVulnerabilityByCVE(String cve) throws ServiceException{
+        try {
+            return vulnerabilityDAO.getVulnerabilityByCVE(cve);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilitiesByDate(String date) throws ServiceException{
+        try {
+            return vulnerabilityDAO.getVulnerabilitiesByDate(date);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilitiesBySource(String source) throws ServiceException{
+        try {
+            return vulnerabilityDAO.getVulnerabilitiesBySource(source);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilitiesBySourceType(String source_type) throws ServiceException{
+        try {
+            return vulnerabilityDAO.getVulnerabilitiesBySourceType(source_type);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    /* ----------------------------------------- DESCRIPTION ----------------------------------------------- */
+
+    @Override
+    public Description createDescription(Description description) throws ServiceException{
+        try {
             return descriptionDAO.createDescription(description);
-        } catch(DAOException e){
+        } catch (DAOException e) {
             throw new ServiceException(e.getMessage());
         }
     }
 
-    public ProductDAO createProduct(ProductDAO product) throws ServiceException{
-        try{
+    @Override
+    public Description updateDescription(Description description) throws ServiceException{
+        try {
+            return descriptionDAO.updateDescription(description);
+        }catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Description getDescriptionByVulnerability(Vulnerability vulnerability) throws ServiceException{
+        try {
+            return descriptionDAO.getDescriptionByVulnerability(vulnerability);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+     /* ------------------------------------------- PRODUCT ------------------------------------------------- */
+
+    @Override
+    public Product createProduct(Product product) throws ServiceException{
+        try {
             return productDAO.createProduct(product);
-        } catch(DAOException e){
+        } catch (DAOException e) {
             throw new ServiceException(e.getMessage());
         }
     }
 
-    public VulProd createVulProdEntry(VulProd vulProd) throws ServiceException{
-        try{
-            return vulProdDAO.createVulProdEntry(vulProd);
-        } catch(DAOException e){
+    @Override
+    public Product updateProduct(Product product) throws ServiceException{
+        try {
+            return productDAO.updateProduct(product);
+        } catch (DAOException e) {
             throw new ServiceException(e.getMessage());
         }
-    }*/
+    }
+
+    @Override
+    public Product getProductById(int id) throws ServiceException{
+        try {
+            return productDAO.getProductById(id);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public Product getProductByName(String name) throws ServiceException{
+        try {
+            return productDAO.getProductByName(name);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    /* ------------------------------------------- VulProd -------------------------------------------------- */
+
+    @Override
+    public VulProd createVulProd(VulProd vulProd) throws ServiceException{
+        try {
+            return vulProdDAO.createVulProd(vulProd);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<VulProd> getAllVulIdsForProd(Product product) throws ServiceException{
+        try {
+            return vulProdDAO.getAllVulIdsForProd(product);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<VulProd> getAllProdIdsForVul(Vulnerability vulnerability) throws ServiceException{
+        try {
+            return vulProdDAO.getAllProdIdsForVul(vulnerability);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+
+    /* ------------------------------------- VulnerabilitiesSources ---------------------------------------- */
+
+    @Override
+    public VulnerabilitiesSource createVulnerabilitiesSource(VulnerabilitiesSource vulnerabilitiesSource) throws ServiceException{
+        try {
+            return vulnerabilitiesSourcesDAO.createVulnerabilitiesSource(vulnerabilitiesSource);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public VulnerabilitiesSource getVulnerabilitySourceByLink(String link) throws ServiceException{
+        try {
+            return vulnerabilitiesSourcesDAO.getVulnerabilitySourceByLink(link);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public VulnerabilitiesSource updateVulnerabilitiesSource(VulnerabilitiesSource vulnerabilitiesSource) throws ServiceException{
+        try {
+            return vulnerabilitiesSourcesDAO.updateVulnerabilitiesSource(vulnerabilitiesSource);
+        } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
 
 }
