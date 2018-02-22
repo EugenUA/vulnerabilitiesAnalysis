@@ -32,8 +32,8 @@
 
 ## User Interface (UI)
 
-# Resources
+## Resources
 
-# Tests
+## Tests
 
 # Summary and Final Notes
