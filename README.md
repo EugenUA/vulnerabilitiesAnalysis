@@ -1,5 +1,5 @@
 # Vulnerabilities Aggregation and Analysis Software
-## Implemented as part of Bachelor thesis "Aggregation and Analysis of IT Security Vulnerabilities"
+### Implemented as part of Bachelor thesis "Aggregation and Analysis of IT Security Vulnerabilities"
 ### Technical University of Vienna; INSO; Essential Security; (2017 - 2018). 
 ### Advisor: Florian Fankhauser
 ### Author: Eugen Gruzdev
