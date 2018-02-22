@@ -1,7 +1,6 @@
 package entities.miningEntities;
 
-public class Vulnerability {
+public class MiningEntity {
 
     // TODO
-
 }

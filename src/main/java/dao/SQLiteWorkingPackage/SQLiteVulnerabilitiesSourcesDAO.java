@@ -32,7 +32,7 @@ public class SQLiteVulnerabilitiesSourcesDAO implements VulnerabilitiesSourcesDA
             stmt.setString(2, vulnerabilitiesSource.getSource_type());
             stmt.setString(3, vulnerabilitiesSource.getLink());
             stmt.setString(4, vulnerabilitiesSource.getLast_access());
-            stmt.setString(4, vulnerabilitiesSource.getNotes());
+            stmt.setString(5, vulnerabilitiesSource.getNotes());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -86,7 +86,7 @@ public class SQLiteVulnerabilitiesSourcesDAO implements VulnerabilitiesSourcesDA
             stmt.setString(3, vulnerabilitiesSource.getLink());
             stmt.setString(4, vulnerabilitiesSource.getLast_access());
             stmt.setString(5, vulnerabilitiesSource.getNotes());
-            stmt.setInt(2, vulnerabilitiesSource.getId());
+            stmt.setInt(6, vulnerabilitiesSource.getId());
             stmt.executeUpdate();
             con.commit();
             return vulnerabilitiesSource;

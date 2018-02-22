@@ -115,7 +115,7 @@ public class SimpleService implements Service {
         }
     }
 
-    public Product createProduct(Product product) throws ServiceException{
+    public ProductDAO createProduct(ProductDAO product) throws ServiceException{
         try{
             return productDAO.createProduct(product);
         } catch(DAOException e){

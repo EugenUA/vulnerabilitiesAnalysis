@@ -3,14 +3,14 @@ package entities.dbEntities;
 public class Product {
 
     private int id;
-    private int name;
-    private int version;
+    private String name;
+    private String version;
 
     public Product(){
 
     }
 
-    public Product(int id, int name, int version) {
+    public Product(int id, String name, String version) {
         this.id = id;
         this.name = name;
         this.version = version;
@@ -24,19 +24,19 @@ public class Product {
         this.id = id;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public int getVersion() {
+    public String getVersion() {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(String version) {
         this.version = version;
     }
 
@@ -55,14 +55,14 @@ public class Product {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + name;
-        result = 31 * result + version;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + version.hashCode();
         return result;
     }
 
     @Override
     public String toString() {
-        return "Product{" +
+        return "ProductDAO{" +
                 "id=" + id +
                 ", name=" + name +
                 ", version=" + version +

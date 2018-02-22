@@ -74,13 +74,15 @@ public interface Service {
     /* ---------------------------------------- VULNERABILITY --------------------------------------------- */
     public Vulnerability createVulnerability(Vulnerability vulnerability) throws ServiceException;
 
-    /* DESCRIPTION */
+    /* ----------------------------------------- DESCRIPTION ----------------------------------------------- */
     //public Description createDescription(Description description) throws ServiceException;
 
-    /* PRODUCT */
-    //public Product createProduct(Product product) throws ServiceException;
+    /* ------------------------------------------- PRODUCT ------------------------------------------------- */
+    //public ProductDAO createProduct(ProductDAO product) throws ServiceException;
 
-    /* VulProd */
+    /* ------------------------------------------- VulProd -------------------------------------------------- */
     //public VulProd createVulProdEntry(VulProd vulProd) throws ServiceException;
+
+    /* ------------------------------------- VulnerabilitiesSources ---------------------------------------- */
 
 }
