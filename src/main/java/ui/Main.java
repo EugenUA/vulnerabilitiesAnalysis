@@ -4,6 +4,7 @@ import entities.dbEntities.User;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.apache.log4j.LogManager;
+import service.AggregateAlerts.AggregationMainEntrance;
 import service.SimpleService.Service;
 import service.ServiceException;
 import service.SimpleService.SimpleService;
@@ -27,6 +28,8 @@ public class Main {
                 User user = wPage.welcome();
 
                 //TODO: ADD AGGREGATION MODULES
+                AggregationMainEntrance aggregationMainEntrance = new AggregationMainEntrance(user);
+                aggregationMainEntrance.aggregateSecurityAlerts();
                 //TODO: Polling
 
                 try {

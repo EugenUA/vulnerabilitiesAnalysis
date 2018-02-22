@@ -11,6 +11,10 @@ public class GetConfigValues {
 
     private String email;
     private String password;
+    private String host;
+    private String storeType;
+    private String storeProtocol;
+    private String pop3SPort;
 
     public void getConfigValues() throws IOException{
         try{
@@ -25,12 +29,32 @@ public class GetConfigValues {
                 throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
             }
 
+            host = prop.getProperty("host");
+            storeType = prop.getProperty("storeType");
+            storeProtocol = prop.getProperty("storeProtocol");
+            pop3SPort = prop.getProperty("pop3sPort");
             email = prop.getProperty("email");
             password = prop.getProperty("password");
 
         } finally {
             inputStream.close();
         }
+    }
+
+    public String getPop3SPort() {
+        return pop3SPort;
+    }
+
+    public String getStoreProtocol() {
+        return storeProtocol;
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public String getStoreType() {
+        return storeType;
     }
 
     public String getEmail() {
