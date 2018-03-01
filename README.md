@@ -60,10 +60,51 @@ contains vulnerabilities information or no.
 
 In the following the program architecture and implementation details
 will be presented.
- 
-# Technology Stack
 
 # Architecture Description
+
+The Vulnerability Aggregation and Analysis Software consists of
+3 major layers: data layer (called here DAO); business layer
+(called here Service); and presentation layer (called here UI
+(an abbreviation of User Interface)). The precise technical
+description of each layer will be given in this document below.
+In this chapter only the intuitive meaning will be provided.
+
+**Data (DAO) layer** is responsible for every  program-internal
+data manipulation: saving, searching, modifying, deleting, etc
+of data located in the database. It also provides interfaces
+for other layers who want to access or manipulate data in the
+database. Any computations occur here.
+
+**Business (service) layer** provides the program with main
+logical modules. It is responsible for:
+* aggregation of security alerts from all the defined
+  sources
+* correlation of similar security alerts
+* accessing interfaces of DAO layer for saving results of computations
+* program-internal logic: accessing and reading properties
+  file; sending greeting email to new users; etc.
+  
+**Presentation (UI) layer** includes all the classes and all
+the logic that is needed to present to the user the results of
+computations made in service layer and to search concrete data
+in the database.
+
+There are also some separate folders that contain important
+program parts:
+* Entities folder contains all the logical entities the program
+needs to operate with, for example database: every table in the
+database is represented by entity classes. Objects of these
+classes are then entries of the table.
+* Main class is the main control point of the whole program.
+It sets the rules of uer-program and inter-modules cooperation.
+* Resources package contains properties file which specifies 
+current (variable) program options.
+* pom.xml file contains information about the project and
+configuration details used by Maven to build the project.
+* LICENSE file defines terms of BSD 2-Clause License.
+
+# Technology Stack
 
 ## DAO
 
