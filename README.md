@@ -38,19 +38,19 @@ then the rule.
 
 There are three important points that make aggregation and 
 analysis of security advisories a computational hard task:
-* ** Large amount of security advisories ** published every day
+* **Large amount of security advisories** published every day
 in wide variety of sources. The aggregation module of the
 program should be able to collect advisories from many different
 sources, including different source types, for example: emails,
 web pages, rss feeds, etc.
-* ** Poorly structured information in security alerts written
-in natural human language ** makes the analysis procedure very hard.
+* **Poorly structured information in security alerts written
+in natural human language** makes the analysis procedure very hard.
 The challenging part is to identify semantically similar advisories
 from different sources (possibly in different formats) and to
 retrieve the information about products and their versions from
 semi-structured texts. Some publishers provide multiple vulnerabilities
 in the same security alert. This makes the analysis task not easier.
-* ** Not every aggregated advisory is an advisory. ** Some publishers
+* **Not every aggregated advisory is an advisory.** Some publishers
 of security alerts do not always disclose
 vulnerabilities information in their announces. Sometimes, and
 quite often, they publish also advertisements of security events
