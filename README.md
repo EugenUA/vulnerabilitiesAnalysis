@@ -58,7 +58,9 @@ or books, congratulate with local or global holidays, etc. Therefore,
 there is a need to classify if every received security alert
 contains vulnerabilities information or no. 
 
-
+In the following the program architecture and implementation details
+will be presented.
+ 
 # Technology Stack
 
 # Architecture Description
