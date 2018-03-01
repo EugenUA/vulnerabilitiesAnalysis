@@ -29,7 +29,7 @@ public class Main {
 
                 //TODO: ADD AGGREGATION MODULES
                 AggregationMainEntrance aggregationMainEntrance = new AggregationMainEntrance(user);
-                aggregationMainEntrance.aggregateSecurityAlerts();
+                // aggregationMainEntrance.aggregateSecurityAlerts();
                 //TODO: Polling
 
                 try {
