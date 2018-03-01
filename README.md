@@ -92,17 +92,17 @@ in the database.
 
 There are also some separate folders that contain important
 program parts:
-    * Entities folder contains all the logical entities the program
+* Entities folder contains all the logical entities the program
 needs to operate with, for example database: every table in the
 database is represented by entity classes. Objects of these
 classes are then entries of the table.
-    * Main class is the main control point of the whole program.
+* Main class is the main control point of the whole program.
 It sets the rules of uer-program and inter-modules cooperation.
-    * Resources package contains properties file which specifies 
+* Resources package contains properties file which specifies 
 current (variable) program options.
-    * pom.xml file contains information about the project and
+* pom.xml file contains information about the project and
 configuration details used by Maven to build the project.
-    * LICENSE file defines terms of BSD 2-Clause License.
+* LICENSE file defines terms of BSD 2-Clause License.
 
 # Technology Stack
 
