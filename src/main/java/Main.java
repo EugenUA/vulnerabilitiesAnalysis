@@ -1,5 +1,3 @@
-package ui;
-
 import entities.dbEntities.User;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
@@ -8,12 +6,18 @@ import service.AggregateAlerts.AggregationMainEntrance;
 import service.SimpleService.Service;
 import service.ServiceException;
 import service.SimpleService.SimpleService;
+import ui.UserCabinet;
+import ui.WelcomePage;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
 
     private static final Logger logger = LogManager.getLogger(Main.class);
+    // Enabling of polling:
+    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
     public static void main(String[] args) {
         try {
@@ -27,10 +31,17 @@ public class Main {
                 WelcomePage wPage = new WelcomePage(service);
                 User user = wPage.welcome();
 
-                //TODO: ADD AGGREGATION MODULES
                 AggregationMainEntrance aggregationMainEntrance = new AggregationMainEntrance(user);
-                // aggregationMainEntrance.aggregateSecurityAlerts();
-                //TODO: Polling
+                //TODO: ADD AGGREGATION MODULES
+                scheduler.scheduleAtFixedRate(()->{
+                     /* POLLING BEGIN */
+
+                     aggregationMainEntrance.aggregateSecurityAlerts();
+
+
+                     /* END OF POLLING */
+                }, 0, 3L, TimeUnit.MINUTES);
+
 
                 try {
                     TimeUnit.SECONDS.sleep(2);

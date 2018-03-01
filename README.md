@@ -34,7 +34,7 @@ mandatory structure, which means that every security alert is written
 in different way without adhering some pattern. Fortunately, there
 are some publishers of security alerts who strive to use the same
 pattern for all published advisories, but they are more the exception
-then the rule.
+than the rule.
 
 There are three important points that make aggregation and 
 analysis of security advisories a computational hard task:

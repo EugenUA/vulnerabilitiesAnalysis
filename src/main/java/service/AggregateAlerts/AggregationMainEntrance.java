@@ -33,7 +33,7 @@ public class AggregationMainEntrance {
         System.out.println("Security advisories aggregation and processing procedures started!");
         System.out.println("It can take up to 5 minutes");
 
-        receivedEmails = aggregateSecurityAlertsIncomingFromEmail();
+        //receivedEmails = aggregateSecurityAlertsIncomingFromEmail();
 
         System.out.println("Aggregation procedure successfully completed!");
         System.out.println("*********************************");
