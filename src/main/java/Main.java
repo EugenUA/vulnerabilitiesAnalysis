@@ -6,6 +6,7 @@ import service.AggregateAlerts.AggregationMainEntrance;
 import service.SimpleService.Service;
 import service.ServiceException;
 import service.SimpleService.SimpleService;
+import service.TextMining.TextMiningMainEntrance;
 import ui.UserCabinet;
 import ui.WelcomePage;
 
@@ -32,6 +33,7 @@ public class Main {
                 User user = wPage.welcome();
 
                 AggregationMainEntrance aggregationMainEntrance = new AggregationMainEntrance(user);
+                TextMiningMainEntrance textMiningMainEntrance = new TextMiningMainEntrance();
                 //TODO: ADD AGGREGATION MODULES
                 scheduler.scheduleAtFixedRate(()->{
                      /* POLLING BEGIN */
