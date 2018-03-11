@@ -48,7 +48,7 @@ public class AggregationMainEntrance {
             FetchingIncomingEmails fetchEmail = new FetchingIncomingEmails();
             fetchEmail.fetch();
             ArrayList<Email> emails = fetchEmail.getIncomingEmails();
-            //System.out.println("Email checked! " + "Number of received advisories: " + emails.size() );
+            System.out.println("Email checked! " + "Number of received advisories: " + emails.size() );
 
             // Print Emails
             /*for(Email email : emails){

@@ -124,6 +124,34 @@ configuration details used by Maven to build the project.
 
 ### AggregateAlerts
 
+It is a package that is used in the program for aggregating
+security alerts from all the sources. It has the following
+structure:
+* **Email Aggregation Package** contains a class **FetchingIncomingEmails.java**
+which uses javax.mail.* imports to gain access to the google email
+account with credentials that are specified in the config.properties file.
+This class is responsible for fetching incoming emails and for
+writing this  emails into a special format (defined in aggregationEntities package).
+* **HTML Aggregation Package** contains a class **ParseHTML.java** which is used
+for reading web pages using JSOUP library. This class is responsible for
+reading document in HTML format and for preliminary modifications of the initial 
+content of security alerts.
+* **RSS Aggregation Package** contains a class **ParseRSS.java** which is used 
+for reading RSS-Feeds using sun.syndication library. This class is responsible for
+reading and parsing RSS-Feeds and performs modifications of intitial
+content of security alerts.
+* **AggregationMainEntrance.java** is the main control point
+of the aggregation procedure. This class defines lists of
+incoming alerts from all the sources and calls each package
+from above to perform aggregation.
+
+For HTML and RSS parts in general holds: if the security advisory source is new
+(which means, that it is not already present in the database), then all the available security
+alerts will be aggregated; otherwise, if the source in already known (which means, that it is
+already present in the database), then only new security advisories will be aggregated. Under new
+we understand all the security alerts, that were published since last successful try to
+aggregate them.
+
 ### Text Mining
 
 ## User Interface (UI)

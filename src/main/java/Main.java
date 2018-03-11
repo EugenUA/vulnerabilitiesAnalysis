@@ -34,7 +34,6 @@ public class Main {
 
                 AggregationMainEntrance aggregationMainEntrance = new AggregationMainEntrance(user);
                 TextMiningMainEntrance textMiningMainEntrance = new TextMiningMainEntrance();
-                //TODO: ADD AGGREGATION MODULES
                 scheduler.scheduleAtFixedRate(()->{
                      /* POLLING BEGIN */
 
