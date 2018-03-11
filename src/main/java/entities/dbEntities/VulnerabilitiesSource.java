@@ -16,7 +16,7 @@ public class VulnerabilitiesSource {
     private String last_access;
     private String notes;
 
-    private VulnerabilitiesSource(){}
+    public VulnerabilitiesSource(){}
 
     public VulnerabilitiesSource(int id, String source_name, String source_type, String link, String last_access, String notes) {
         this.id = id;

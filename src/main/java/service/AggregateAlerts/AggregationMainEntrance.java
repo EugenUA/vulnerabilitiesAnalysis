@@ -1,11 +1,13 @@
 package service.AggregateAlerts;
 
 import entities.aggregationEntities.Email;
+import entities.aggregationEntities.HTML;
 import entities.aggregationEntities.RSS;
 import entities.dbEntities.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import service.AggregateAlerts.EmailAggregation.FetchingIncomingEmails;
+import service.AggregateAlerts.HTMLAggregation.ParseHTML;
 import service.AggregateAlerts.RSSAggregation.ParseRSS;
 import service.ServiceException;
 
@@ -18,6 +20,7 @@ public class AggregationMainEntrance {
     /* Aggregated Advisories Storage */
     private ArrayList<Email> receivedEmails;
     private ArrayList<RSS> receivedRSS;
+    private ArrayList<HTML> receivedHTML;
 
     private User user;
 
@@ -26,6 +29,7 @@ public class AggregationMainEntrance {
 
         receivedEmails = new ArrayList<Email>();
         receivedRSS = new ArrayList<RSS>();
+        receivedHTML = new ArrayList<HTML>();
     }
 
     public void aggregateSecurityAlerts(){
@@ -34,6 +38,7 @@ public class AggregationMainEntrance {
 
         receivedEmails = aggregateSecurityAlertsIncomingFromEmail();
         receivedRSS = aggregateSecurityAlertsIncomingFromRSSFeeds();
+        receivedHTML = aggregateSecurityAlertsIncomingFromHTMLWebPages();
 
     }
 
@@ -43,7 +48,7 @@ public class AggregationMainEntrance {
             FetchingIncomingEmails fetchEmail = new FetchingIncomingEmails();
             fetchEmail.fetch();
             ArrayList<Email> emails = fetchEmail.getIncomingEmails();
-            System.out.println("Email checked! " + "Number of received advisories: " + emails.size() );
+            //System.out.println("Email checked! " + "Number of received advisories: " + emails.size() );
 
             // Print Emails
             /*for(Email email : emails){
@@ -65,7 +70,7 @@ public class AggregationMainEntrance {
             parseRSSFeed.readRSSSources();
             ArrayList<RSS> rssAlerts = parseRSSFeed.getRssAlerts();
 
-           /* for(RSSAlert alert : rssAlerts){
+           /* for(RSS alert : rssAlerts){
                 System.out.println("--------------------------------------------");
                 System.out.println(alert);
                 System.out.println("---------------------------------------------");
@@ -78,6 +83,30 @@ public class AggregationMainEntrance {
         }
         /* END RSS FEED PARSING */
         return null; // should not be reachable
+    }
+
+    private ArrayList<HTML> aggregateSecurityAlertsIncomingFromHTMLWebPages(){
+        /* WEBPAGE */
+        try {
+            ParseHTML parseHTML = new ParseHTML();
+
+            parseHTML.parseHTMLSources();
+
+            ArrayList<HTML> htmlAlerts = parseHTML.getAlerts();
+
+           /* for(HTMLAlert alert : htmlAlerts){
+                System.out.println("--------------------------------------------");
+                System.out.println(alert);
+                System.out.println("---------------------------------------------");
+            } */
+
+            System.out.println("Web pages checked! " + "Number of received advisories: " + htmlAlerts.size());
+            return htmlAlerts;
+        } catch (ServiceException e){
+            System.out.println("Due to connection problems the Web pages cannot be checked!");
+        }
+        /* END WEB PAGE PARSING */
+        return null; // should never be reached
     }
 
 }
