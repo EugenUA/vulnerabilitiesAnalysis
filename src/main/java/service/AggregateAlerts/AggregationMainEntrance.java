@@ -42,13 +42,25 @@ public class AggregationMainEntrance {
 
     }
 
+    public ArrayList<Email> getReceivedEmails() {
+        return receivedEmails;
+    }
+
+    public ArrayList<RSS> getReceivedRSS() {
+        return receivedRSS;
+    }
+
+    public ArrayList<HTML> getReceivedHTML() {
+        return receivedHTML;
+    }
+
     private ArrayList<Email> aggregateSecurityAlertsIncomingFromEmail(){
         /* EMAIL */
         try {
             FetchingIncomingEmails fetchEmail = new FetchingIncomingEmails();
             fetchEmail.fetch();
             ArrayList<Email> emails = fetchEmail.getIncomingEmails();
-            System.out.println("Email checked! " + "Number of received advisories: " + emails.size() );
+            //System.out.println("Email checked! " + "Number of received advisories: " + emails.size() );
 
             // Print Emails
             /*for(Email email : emails){
@@ -76,7 +88,7 @@ public class AggregationMainEntrance {
                 System.out.println("---------------------------------------------");
             }*/
 
-            System.out.println("RSS-feeds checked! " + "Number of received advisories: " + rssAlerts.size());
+            //System.out.println("RSS-feeds checked! " + "Number of received advisories: " + rssAlerts.size());
             return rssAlerts;
         } catch(ServiceException e) {
             System.out.println("Due to connection problems the RSS-feeds cannot be checked!");
@@ -100,7 +112,7 @@ public class AggregationMainEntrance {
                 System.out.println("---------------------------------------------");
             } */
 
-            System.out.println("Web pages checked! " + "Number of received advisories: " + htmlAlerts.size());
+            //System.out.println("Web pages checked! " + "Number of received advisories: " + htmlAlerts.size());
             return htmlAlerts;
         } catch (ServiceException e){
             System.out.println("Due to connection problems the Web pages cannot be checked!");
