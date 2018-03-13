@@ -48,12 +48,20 @@ public class TextMiningMainEntrance {
     }
 
     public void buildMiningEntities(){
+        for(Email email : receivedEmails){
+            
+        }
+        for(RSS rss : receivedRSS){
 
+        }
+        for(HTML html : receivedHTML){
+
+        }
     }
 
     public void performTextMinig(){
 
-
+        this.buildMiningEntities();
 
     }
 }
