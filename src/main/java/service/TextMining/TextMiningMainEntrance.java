@@ -122,6 +122,7 @@ public class TextMiningMainEntrance {
         preprocessing.conductPreprocessingStep();
 
         Classification classification = new Classification(this.miningEntities);
+        classification.classify();
 
 
         /* For Testing purposes */

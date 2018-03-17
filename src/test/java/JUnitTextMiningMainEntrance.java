@@ -13,12 +13,62 @@ public class JUnitTextMiningMainEntrance {
     public Email debianEmail = new Email();
     public Email fdEmail = new Email();
 
+    public Email nonValid = new Email();
+
     public RSS usCertAlert = new RSS();
     public RSS ciscoAlert = new RSS();
     public RSS bugtraqAlert = new RSS();
 
     @Before
     public void setUp() throws Exception {
+
+        nonValid.setContent("Greetings from hardwear.io!\n" +
+                "\n" +
+                "We would like to share few exciting updates that you can expect from\n" +
+                "hardwear.io in 2018!\n" +
+                "\n" +
+                "First of all, we are very proud to announce that hardwear.io is going to\n" +
+                "hold its first Security Training in Berlin!\n" +
+                "\n" +
+                "Dates: 26 – 27 April 2018\n" +
+                "\n" +
+                "Venue: Novotel Am Tiergarten, Berlin, Germany\n" +
+                "\n" +
+                "Hardware Security Trainings:\n" +
+                "\n" +
+                "-  Practical IOT Hacking by Aseem Jakhar\n" +
+                "\n" +
+                "-  Low-Level Hardware Reversing by Javier-Vazquez Vidal & Ferdinand\n" +
+                "\n" +
+                "-  Side-Channel Attacks 101 by Lejla Batina & Kostas Papagiannopoulos\n" +
+                "\n" +
+                "-  Practical Car Hacking by Guillaume Heilles\n" +
+                "\n" +
+                "Registration is Open. Pre-con proces available till 31st March 2018.\n" +
+                "\n" +
+                "\n" +
+                "Hardwear.io Conference & Training 2018 will traditionally take place in The\n" +
+                "Hague for the 4th time! Mark your calendars to:\n" +
+                "\n" +
+                "Training: 11-12 September\n" +
+                "\n" +
+                "Conference: 13-14 September\n" +
+                "\n" +
+                "Venue: NH Hotels, The Hague, the Netherlands\n" +
+                "\n" +
+                "\n" +
+                "hardwear.io 2018 Call For Papers is Open till 9th May 2018! Get your\n" +
+                "research ready for another successful year!\n" +
+                "\n" +
+                "Best Regards,\n" +
+                "\n" +
+                "Yuliya Pliavaka\n" +
+                "Mob. +91-7720825835 <+91%2077208%2025835> / Linkedin\n" +
+                "www.hardwear.io  Hardware Security Conference\n" +
+                "www.nullcon.net  Nullcon Information Security Conference\n" +
+                "www.payatu.com   Payatu Technologies\n");
+        nonValid.setSubject("hardwear.io CFP is Open & New Security Training in Berlin!");
+        nonValid.setTo("fulldisclosure@seclists.org");
 
         fdEmail.setContent("SEC Consult Vulnerability Lab Security Advisory < 20180314-0 >\n" +
                 "=======================================================================\n" +
@@ -550,6 +600,7 @@ public class JUnitTextMiningMainEntrance {
         emails.add(debianEmail);
         emails.add(vmWareEmail);
         emails.add(fdEmail);
+        emails.add(nonValid);
 
         ArrayList<RSS> rsses = new ArrayList<RSS>();
         rsses.add(usCertAlert);

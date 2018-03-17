@@ -50,9 +50,9 @@ public class Preprocessing {
 
             /* remove non-letter characters (punctuation and numbers) & fold input text to lower case */
             entity.setPreprocessed_short_description(Arrays.asList(
-                    entity.getShort_description().replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+")));
+                    entity.getShort_description().replaceAll("[^a-zA-Z ]", " ").toLowerCase().split("\\s+")));
             entity.setPreprocessed_long_description(Arrays.asList(
-                    entity.getLong_description().replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+")));
+                    entity.getLong_description().replaceAll("[^a-zA-Z ]", " ").toLowerCase().split("\\s+")));
         }
 
         /* STOP WORDS REMOVAL */
