@@ -1,4 +1,4 @@
-package service.TextMining.Correlation;
+package service.TextMining.Correlation.Preprocessing;
 
 import com.github.chen0040.data.text.TextFilter;
 import com.github.chen0040.data.text.PorterStemmer;
@@ -6,9 +6,7 @@ import com.github.chen0040.data.text.StopWordRemoval;
 import entities.miningEntities.MiningEntity;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import sun.font.TrueTypeFont;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -32,8 +30,25 @@ public class Preprocessing {
 
         TextFilter stemmer = new PorterStemmer();
 
-        /* TOKENIZER & remove non-letter characters (punctuation and numbers) & fold input text to lower case*/
+        /* TOKENIZER */
         for(MiningEntity entity : this.miningEntities){
+
+            /* DELETE ALL EMAILS, CVEs AND URLS FROM ADVISORY */
+            String EMAIL_PATTERN = "([^.@\\s]+)(\\.[^.@\\s]+)*@([^.@\\s]+\\.)+([^.@\\s]+)";
+            String URL_PATTERN = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
+            String CVE_PATTERN = "\"CVE-\\\\d{4}-\\\\d{4,7}\"";
+            entity.setShort_description(entity.getShort_description().replaceAll(EMAIL_PATTERN,""));
+            entity.setLong_description(entity.getLong_description().replaceAll(EMAIL_PATTERN,""));
+            entity.setShort_description(entity.getShort_description().replaceAll(URL_PATTERN,""));
+            entity.setLong_description(entity.getLong_description().replaceAll(URL_PATTERN,""));
+            entity.setShort_description(entity.getShort_description().replaceAll(CVE_PATTERN,""));
+            entity.setLong_description(entity.getLong_description().replaceAll(CVE_PATTERN,""));
+
+            /* DELETING ALL NEW LINES FROM THE BEGINNING AND THE END OF THE STRING*/
+            entity.setShort_description(entity.getShort_description().trim());
+            entity.setLong_description(entity.getLong_description().trim());
+
+            /* remove non-letter characters (punctuation and numbers) & fold input text to lower case */
             entity.setPreprocessed_short_description(Arrays.asList(
                     entity.getShort_description().replaceAll("[^a-zA-Z ]", "").toLowerCase().split("\\s+")));
             entity.setPreprocessed_long_description(Arrays.asList(

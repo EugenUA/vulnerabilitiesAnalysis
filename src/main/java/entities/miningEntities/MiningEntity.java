@@ -12,8 +12,14 @@ public class MiningEntity {
 
     private String short_description;
     private String long_description;
+
+    /* Preprocessing */
     private List<String> preprocessed_short_description;
     private List<String> preprocessed_long_description;
+
+    /* Vector Space Model (TF-IDF) */
+    private List<double[]> short_tfidfDocsVector;
+    private List<double[]> long_tfidfDocsVector;
 
     private String date;
     private String source;
@@ -32,6 +38,22 @@ public class MiningEntity {
         this.date = date;
         this.source = source;
         this.source_type = source_type;
+    }
+
+    public List<double[]> getShort_tfidfDocsVector() {
+        return short_tfidfDocsVector;
+    }
+
+    public void setShort_tfidfDocsVector(List<double[]> short_tfidfDocsVector) {
+        this.short_tfidfDocsVector = short_tfidfDocsVector;
+    }
+
+    public List<double[]> getLong_tfidfDocsVector() {
+        return long_tfidfDocsVector;
+    }
+
+    public void setLong_tfidfDocsVector(List<double[]> long_tfidfDocsVector) {
+        this.long_tfidfDocsVector = long_tfidfDocsVector;
     }
 
     public String getShort_description() {

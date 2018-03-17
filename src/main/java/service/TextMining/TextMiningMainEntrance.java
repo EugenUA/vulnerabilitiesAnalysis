@@ -3,21 +3,14 @@ package service.TextMining;
 import entities.aggregationEntities.Email;
 import entities.aggregationEntities.HTML;
 import entities.aggregationEntities.RSS;
-import entities.dbEntities.Description;
-import entities.dbEntities.Product;
-import entities.dbEntities.Vulnerability;
 import entities.miningEntities.MiningEntity;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.bouncycastle.cms.CMSSignedData;
 import org.jsoup.Jsoup;
-import service.TextMining.Correlation.Preprocessing;
+import service.TextMining.Correlation.Preprocessing.Preprocessing;
 
 
 public class TextMiningMainEntrance {
@@ -126,11 +119,11 @@ public class TextMiningMainEntrance {
 
         Preprocessing preprocessing = new Preprocessing(this.miningEntities);
         preprocessing.conductPreprocessingStep();
-        
+
 
         /* For Testing purposes */
         for(MiningEntity min : miningEntities){
-            System.out.println(min.getPreprocessed_short_description());
+            System.out.println(min.getPreprocessed_long_description());
         }
 
     }
