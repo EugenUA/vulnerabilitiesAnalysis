@@ -4,70 +4,102 @@ import entities.dbEntities.Description;
 import entities.dbEntities.Product;
 import entities.dbEntities.Vulnerability;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 public class MiningEntity {
 
-    private Vulnerability vulnerability;
-    private Description description;
-    private Product product;
+    private String short_description;
+    private String long_description;
+    private List<String> preprocessed_short_description;
+    private List<String> preprocessed_long_description;
 
-    public MiningEntity(){}
+    private String date;
+    private String source;
+    private String source_type;
 
-    public MiningEntity(Vulnerability vulnerability, Description description, Product product) {
-        this.vulnerability = vulnerability;
-        this.description = description;
-        this.product = product;
+    public MiningEntity(){
+
     }
 
-    public Vulnerability getVulnerability() {
-        return vulnerability;
+    public MiningEntity(String short_description, String long_description, List<String> preprocessed_short_description,
+                        List<String> preprocessed_long_description, String date, String source, String source_type) {
+        this.short_description = short_description;
+        this.long_description = long_description;
+        this.preprocessed_short_description = preprocessed_short_description;
+        this.preprocessed_long_description = preprocessed_long_description;
+        this.date = date;
+        this.source = source;
+        this.source_type = source_type;
     }
 
-    public void setVulnerability(Vulnerability vulnerability) {
-        this.vulnerability = vulnerability;
+    public String getShort_description() {
+        return short_description;
     }
 
-    public Description getDescription() {
-        return description;
+    public void setShort_description(String short_description) {
+        this.short_description = short_description;
     }
 
-    public void setDescription(Description description) {
-        this.description = description;
+    public String getLong_description() {
+        return long_description;
     }
 
-    public Product getProduct() {
-        return product;
+    public void setLong_description(String long_description) {
+        this.long_description = long_description;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public List<String> getPreprocessed_short_description() {
+        return preprocessed_short_description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        MiningEntity that = (MiningEntity) o;
-
-        if (!vulnerability.equals(that.vulnerability)) return false;
-        if (!description.equals(that.description)) return false;
-        return product.equals(that.product);
+    public void setPreprocessed_short_description(List<String> preprocessed_short_description) {
+        this.preprocessed_short_description = preprocessed_short_description;
     }
 
-    @Override
-    public int hashCode() {
-        int result = vulnerability.hashCode();
-        result = 31 * result + description.hashCode();
-        result = 31 * result + product.hashCode();
-        return result;
+    public List<String> getPreprocessed_long_description() {
+        return preprocessed_long_description;
+    }
+
+    public void setPreprocessed_long_description(List<String> preprocessed_long_description) {
+        this.preprocessed_long_description = preprocessed_long_description;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getSource_type() {
+        return source_type;
+    }
+
+    public void setSource_type(String source_type) {
+        this.source_type = source_type;
     }
 
     @Override
     public String toString() {
         return "MiningEntity{" +
-                "vulnerability=" + vulnerability +
-                ", description=" + description +
-                ", product=" + product +
+                "short_description='" + short_description + '\'' +
+                ", long_description='" + long_description + '\'' +
+                ", preprocessed_short_description='" + preprocessed_short_description + '\'' +
+                ", preprocessed_long_description='" + preprocessed_long_description + '\'' +
+                ", date='" + date + '\'' +
+                ", source='" + source + '\'' +
+                ", source_type='" + source_type + '\'' +
                 '}';
     }
 }

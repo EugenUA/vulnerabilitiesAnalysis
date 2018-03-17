@@ -38,9 +38,12 @@ public class Main {
                      /* POLLING BEGIN */
 
                      aggregationMainEntrance.aggregateSecurityAlerts();
+
                      textMiningMainEntrance.setReceivedEmails(aggregationMainEntrance.getReceivedEmails());
                      textMiningMainEntrance.setReceivedHTML(aggregationMainEntrance.getReceivedHTML());
                      textMiningMainEntrance.setReceivedRSS(aggregationMainEntrance.getReceivedRSS());
+
+                     textMiningMainEntrance.performTextMining();
 
 
                      /* END OF POLLING */
