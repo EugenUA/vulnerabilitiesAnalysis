@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
+import service.TextMining.Correlation.Classification.Classification;
 import service.TextMining.Correlation.Preprocessing.Preprocessing;
 
 
@@ -119,6 +120,8 @@ public class TextMiningMainEntrance {
 
         Preprocessing preprocessing = new Preprocessing(this.miningEntities);
         preprocessing.conductPreprocessingStep();
+
+        Classification classification = new Classification(this.miningEntities);
 
 
         /* For Testing purposes */
