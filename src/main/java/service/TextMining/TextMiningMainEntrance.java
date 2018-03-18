@@ -123,11 +123,14 @@ public class TextMiningMainEntrance {
 
         Classification classification = new Classification(this.miningEntities);
         classification.classify();
-
+        classification.createVectorSpaceModel();
 
         /* For Testing purposes */
         for(MiningEntity min : miningEntities){
-            System.out.println(min.getPreprocessed_long_description());
+            for(int i = 0; i < min.getLong_tfidfDocsVector().length; i++) {
+                System.out.print(min.getLong_tfidfDocsVector()[i] + " ");
+            }
+            System.out.println();
         }
 
     }
