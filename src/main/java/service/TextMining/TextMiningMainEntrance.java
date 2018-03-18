@@ -17,7 +17,6 @@ import service.TextMining.Correlation.Preprocessing.Preprocessing;
 public class TextMiningMainEntrance {
 
     private static final Logger logger = LogManager.getLogger(TextMiningMainEntrance.class);
-    private ProductVersionFinder productFinder = new ProductVersionFinder();
 
     /* RECEIVED ADVISORIES FROM ALL THE SOURCES */
     private ArrayList<Email> receivedEmails;

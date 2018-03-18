@@ -3,6 +3,7 @@ package service.TextMining.Correlation.Classification;
 import entities.miningEntities.MiningEntity;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import service.TextMining.Correlation.SimilarityFunctions.CosineSimilarity;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -106,6 +107,19 @@ public class Classification {
         for(MiningEntity miningEntity : miningEntities){
             miningEntity.setLong_tfidfDocsVector(long_tfidfDocsVector.get(k));
             k++;
+        }
+    }
+
+    //Test
+    public void getCosineSimilarity() {
+        for (int i = 0; i < short_tfidfDocsVector.size(); i++)
+        {
+            for (int j = 0; j < short_tfidfDocsVector.size(); j++)
+            {
+                if(i!=j)
+                    System.out.println("between " + i + " and " + j + "  =  "+ new CosineSimilarity().cosineSimilarity (
+                            short_tfidfDocsVector.get(i),  short_tfidfDocsVector.get(j)));
+            }
         }
     }
 
