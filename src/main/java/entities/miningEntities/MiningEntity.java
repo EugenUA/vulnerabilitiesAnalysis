@@ -6,6 +6,7 @@ import entities.dbEntities.Vulnerability;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class MiningEntity {
@@ -20,6 +21,9 @@ public class MiningEntity {
     /* Vector Space Model (TF-IDF) */
     private double[] short_tfidfDocsVector;
     private double[] long_tfidfDocsVector;
+
+    /* Clustering */
+    private int clusterNum;
 
     private String date;
     private String source;
@@ -38,6 +42,14 @@ public class MiningEntity {
         this.date = date;
         this.source = source;
         this.source_type = source_type;
+    }
+
+    public int getClusterNum() {
+        return clusterNum;
+    }
+
+    public void setClusterNum(int clusterNum) {
+        this.clusterNum = clusterNum;
     }
 
     public double[] getShort_tfidfDocsVector() {
@@ -117,11 +129,48 @@ public class MiningEntity {
         return "MiningEntity{" +
                 "short_description='" + short_description + '\'' +
                 ", long_description='" + long_description + '\'' +
-                ", preprocessed_short_description='" + preprocessed_short_description + '\'' +
-                ", preprocessed_long_description='" + preprocessed_long_description + '\'' +
+                ", preprocessed_short_description=" + preprocessed_short_description +
+                ", preprocessed_long_description=" + preprocessed_long_description +
+                ", short_tfidfDocsVector=" + Arrays.toString(short_tfidfDocsVector) +
+                ", long_tfidfDocsVector=" + Arrays.toString(long_tfidfDocsVector) +
+                ", clusterNum=" + clusterNum +
                 ", date='" + date + '\'' +
                 ", source='" + source + '\'' +
                 ", source_type='" + source_type + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MiningEntity that = (MiningEntity) o;
+
+        if (clusterNum != that.clusterNum) return false;
+        if (!short_description.equals(that.short_description)) return false;
+        if (!long_description.equals(that.long_description)) return false;
+        if (!preprocessed_short_description.equals(that.preprocessed_short_description)) return false;
+        if (!preprocessed_long_description.equals(that.preprocessed_long_description)) return false;
+        if (!Arrays.equals(short_tfidfDocsVector, that.short_tfidfDocsVector)) return false;
+        if (!Arrays.equals(long_tfidfDocsVector, that.long_tfidfDocsVector)) return false;
+        if (!date.equals(that.date)) return false;
+        if (!source.equals(that.source)) return false;
+        return source_type.equals(that.source_type);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = short_description.hashCode();
+        result = 31 * result + long_description.hashCode();
+        result = 31 * result + preprocessed_short_description.hashCode();
+        result = 31 * result + preprocessed_long_description.hashCode();
+        result = 31 * result + Arrays.hashCode(short_tfidfDocsVector);
+        result = 31 * result + Arrays.hashCode(long_tfidfDocsVector);
+        result = 31 * result + clusterNum;
+        result = 31 * result + date.hashCode();
+        result = 31 * result + source.hashCode();
+        result = 31 * result + source_type.hashCode();
+        return result;
     }
 }

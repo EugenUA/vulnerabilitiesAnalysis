@@ -12,6 +12,7 @@ public class JUnitTextMiningMainEntrance {
     public Email vmWareEmail = new Email();
     public Email debianEmail = new Email();
     public Email fdEmail = new Email();
+    public Email getVmWareEmailDup = new Email();
 
     public Email nonValid = new Email();
 
@@ -461,6 +462,236 @@ public class JUnitTextMiningMainEntrance {
         vmWareEmail.setTo("security-announce@lists.vmware.com");
         vmWareEmail.setSubject("[Security-announce] Updated VMSA-2017-0015.1 - VMware ESXi, vCenter Server, Fusion & Workstation updates resolve multiple security vulnerabilities");
 
+        getVmWareEmailDup.setContent("-----BEGIN PGP SIGNED MESSAGE-----\n" +
+                "Hash: SHA1\n" +
+                "\n" +
+                "- -----------------------------------------------------------------------\n" +
+                "\n" +
+                "                               VMware Security Advisory\n" +
+                "\n" +
+                "Synopsis:    VMware ESXi, vCenter Server, Fusion & Workstation updates \n" +
+                "             resolve multiple security vulnerabilities\n" +
+                "Issue date:  2017-09-14 \n" +
+                "Updated on:  2017-09-15\n" +
+                "CVE number:  CVE-2017-4924, CVE-2017-4925, CVE-2017-4926\n" +
+                "\n" +
+                "1. Summary\n" +
+                "\n" +
+                "   VMware ESXi, vCenter Server, Fusion and Workstation updates resolve \n" +
+                "   multiple security vulnerabilities.\n" +
+                "   \n" +
+                "2. Relevant Products\n" +
+                "    \n" +
+                "   VMware ESXi (ESXi)      \n" +
+                "   VMware vCenter Server\n" +
+                "   VMware Fusion Pro / Fusion (Fusion)   \n" +
+                "   VMware Workstation Pro / Player (Workstation)\n" +
+                "\n" +
+                "3. Problem Description\n" +
+                "\n" +
+                "   a. Out-of-bounds write vulnerability in SVGA\n" +
+                "   \n" +
+                "   VMware ESXi, Workstation & Fusion contain an out-of-bounds write \n" +
+                "   vulnerability in SVGA device. This issue may allow a guest to \n" +
+                "   execute code on the host.\n" +
+                "   \n" +
+                "   VMware would like to thank Nico Golde and Ralf-Philipp Weinmann of\n" +
+                "   Comsecuris UG (haftungsbeschraenkt) working with ZDI for reporting \n" +
+                "   this issue to us.\n" +
+                "   \n" +
+                "   The Common Vulnerabilities and Exposures project (cve.mitre.org) has\n" +
+                "   assigned the identifier CVE-2017-4924 to this issue.\n" +
+                "\n" +
+                "   Column 5 of the following table lists the action required to\n" +
+                "   remediate the vulnerability in each release, if a solution is\n" +
+                "   available.\n" +
+                "\n" +
+                "   VMware      Product Running           Replace with/       Mitigation\n" +
+                "   Product     Version on      Severity  Apply patch         Workaround\n" +
+                "   =========== ======= ======= ========  =============       ==========\n" +
+                "      ESXi      6.5     ESXi   Critical ESXi650-201707101-SG   None\n" +
+                "      ESXi      6.0     ESXi    N/A       Not affected          N/A\n" +
+                "      ESXi      5.5     ESXi    N/A       Not affected          N/A\n" +
+                "   Workstation  12.x    Any    Critical    12.5.7              None\n" +
+                "     Fusion     8.x     OS X   Critical    8.5.8               None  \n" +
+                "\n" +
+                "   b. Guest RPC NULL pointer dereference vulnerability  \n" +
+                "   \n" +
+                "   VMware ESXi, Workstation & Fusion contain a NULL pointer dereference\n" +
+                "   vulnerability. This issue occurs when handling guest RPC requests.\n" +
+                "   Successful exploitation of this issue may allow attackers with \n" +
+                "   normal user privileges to crash their VMs.\n" +
+                "   \n" +
+                "   VMware would like to thank Zhang Haitao for reporting this issue \n" +
+                "   to us.\n" +
+                "   \n" +
+                "   The Common Vulnerabilities and Exposures project (cve.mitre.org) has \n" +
+                "   assigned the identifier CVE-2017-4925 to this issue.\n" +
+                "\n" +
+                "   Column 5 of the following table lists the action required to\n" +
+                "   remediate the vulnerability in each release, if a solution is\n" +
+                "   available.\n" +
+                "\n" +
+                "   VMware      Product Running          Replace with/        Mitigation\n" +
+                "   Product     Version on      Severity Apply patch          Workaround\n" +
+                "   =========== ======= ======= ======== =============        ==========\n" +
+                "      ESXi      6.5     ESXi   Moderate ESXi650-201707101-SG   None\n" +
+                "      ESXi      6.0     ESXi   Moderate ESXi600-201706101-SG   None\n" +
+                "      ESXi      5.5     ESXi   Moderate ESXi550-201709101-SG   None\n" +
+                "   Workstation  12.x    Any    Moderate    12.5.3              None \n" +
+                "     Fusion     8.x     OS X   Moderate     8.5.4              None\n" +
+                "   \n" +
+                "   c. Stored XSS in H5 Client\n" +
+                "   \n" +
+                "   vCenter Server H5 Client contains a vulnerability that may allow for \n" +
+                "   stored cross-site scripting (XSS). An attacker with VC user \n" +
+                "   privileges can inject malicious java-scripts which will get executed\n" +
+                "   when other VC users access the page.\n" +
+                "   \n" +
+                "   VMware would like to thank Thomas Ornetzeder for reporting this \n" +
+                "   issue to us.\n" +
+                "   \n" +
+                "   The Common Vulnerabilities and Exposures project (cve.mitre.org) has \n" +
+                "   assigned the identifier CVE-2017-4926 to this issue.\n" +
+                "\n" +
+                "   Column 5 of the following table lists the action required to\n" +
+                "   remediate the vulnerability in each release, if a solution is\n" +
+                "   available.\n" +
+                "   \n" +
+                "   VMware          Product Running           Replace with/   Mitigation\n" +
+                "   Product         Version on      Severity  Apply patch     Workaround\n" +
+                "   ==============  ======= ======= ========  =============   ==========\n" +
+                "   vCenter Server   6.5    Windows Moderate     6.5 U1          None\n" +
+                "   vCenter Server   6.0    Windows   N/A      Not affected      N/A\n" +
+                "   vCenter Server   5.5    Windows   N/A      Not affected      N/A\n" +
+                "   \n" +
+                "4. Solution\n" +
+                "\n" +
+                "   Please review the patch/release notes for your product and\n" +
+                "   version and verify the checksum of your downloaded file.\n" +
+                "   \n" +
+                "   ESXi 6.5  \n" +
+                "   -------------\n" +
+                "   Downloads:  \n" +
+                "   https://www.vmware.com/patchmgr/findPatch.portal     \n" +
+                "   Documentation:  \n" +
+                "   http://kb.vmware.com/kb/2149933 \n" +
+                "   \n" +
+                "   ESXi 6.0  \n" +
+                "   -------------\n" +
+                "   Downloads:  \n" +
+                "   https://www.vmware.com/patchmgr/findPatch.portal     \n" +
+                "   Documentation:  \n" +
+                "   http://kb.vmware.com/kb/2149960  \n" +
+                "   \n" +
+                "   ESXi 5.5 \n" +
+                "   ------------\n" +
+                "   Downloads:  \n" +
+                "   https://www.vmware.com/patchmgr/findPatch.portal     \n" +
+                "   Documentation:  \n" +
+                "   http://kb.vmware.com/kb/2150876\n" +
+                "   \n" +
+                "   VMware vCenter Server 6.5 U1\n" +
+                "   Downloads:\n" +
+                "   https://my.vmware.com/web/vmware/details?downloadGroup=VC65U1\n" +
+                "   &productId=614&rPId=17343\n" +
+                "   Documentation:\n" +
+                "   https://docs.vmware.com/en/VMware-vSphere/index.html\n" +
+                "   \n" +
+                "   VMware Workstation Pro 12.5.7 \n" +
+                "   Downloads and Documentation:  \n" +
+                "   https://www.vmware.com/go/downloadworkstation  \n" +
+                "   https://www.vmware.com/support/pubs/ws_pubs.html  \n" +
+                "    \n" +
+                "   VMware Workstation Player 12.5.7  \n" +
+                "   Downloads and Documentation:  \n" +
+                "   https://www.vmware.com/go/downloadplayer  \n" +
+                "   https://www.vmware.com/support/pubs/player_pubs.html \n" +
+                "   \n" +
+                "   VMware Workstation Pro 12.5.3  \n" +
+                "   Downloads and Documentation:\n" +
+                "   https://www.vmware.com/go/downloadworkstation\n" +
+                "   https://www.vmware.com/support/pubs/ws_pubs.html   \n" +
+                " \n" +
+                "   VMware Workstation Player 12.5.3    \n" +
+                "   Downloads and Documentation:  \n" +
+                "   https://www.vmware.com/go/downloadplayer\n" +
+                "   https://www.vmware.com/support/pubs/player_pubs.html\n" +
+                "   \n" +
+                "   VMware Fusion Pro / Fusion 8.5.8\n" +
+                "   Downloads and Documentation\n" +
+                "   https://www.vmware.com/go/downloadfusion\n" +
+                "   https://www.vmware.com/support/pubs/fusion_pubs.html\n" +
+                "   \n" +
+                "   VMware Fusion Pro / Fusion 8.5.4\n" +
+                "   Downloads and Documentation\n" +
+                "   https://www.vmware.com/go/downloadfusion\n" +
+                "   https://www.vmware.com/support/pubs/fusion_pubs.html\n" +
+                "   \n" +
+                "   \n" +
+                "5. References\n" +
+                "\n" +
+                "   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-4924\n" +
+                "   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-4925\n" +
+                "   http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-4926\n" +
+                "      \n" +
+                "- ------------------------------------------------------------------------\n" +
+                "\n" +
+                "6. Change log\n" +
+                "\n" +
+                "   2017-09-14 VMSA-2017-0015\n" +
+                "   Initial security advisory in conjunction with the release of VMware\n" +
+                "   ESXi 5.5 patches on 2017-09-14\n" +
+                "   \n" +
+                "   2017-09-15 VMSA-2017-0015.1 Corrected the underlying component \n" +
+                "   affected from SVGA driver to device.\n" +
+                "\n" +
+                "- ------------------------------------------------------------------------\n" +
+                "7. Contact\n" +
+                "\n" +
+                "   E-mail list for product security notifications and announcements:\n" +
+                "   http://lists.vmware.com/cgi-bin/mailman/listinfo/security-announce\n" +
+                "\n" +
+                "   This Security Advisory is posted to the following lists:\n" +
+                "   \n" +
+                "     security-announce@lists.vmware.com\n" +
+                "     bugtraq@securityfocus.com\n" +
+                "     fulldisclosure@seclists.org\n" +
+                "\n" +
+                "   E-mail: security@vmware.com\n" +
+                "   PGP key at: https://kb.vmware.com/kb/1055\n" +
+                "\n" +
+                "   VMware Security Advisories\n" +
+                "   http://www.vmware.com/security/advisories\n" +
+                "\n" +
+                "   VMware Security Response Policy\n" +
+                "   https://www.vmware.com/support/policies/security_response.html\n" +
+                "\n" +
+                "   VMware Lifecycle Support Phases\n" +
+                "   https://www.vmware.com/support/policies/lifecycle.html\n" +
+                "   \n" +
+                "   VMware Security & Compliance Blog\n" +
+                "   https://blogs.vmware.com/security\n" +
+                "\n" +
+                "   Twitter\n" +
+                "   https://twitter.com/VMwareSRC\n" +
+                "\n" +
+                "   Copyright 2017 VMware Inc.  All rights reserved.\n" +
+                "\n" +
+                "-----BEGIN PGP SIGNATURE-----\n" +
+                "Version: Encryption Desktop 10.4.1 (Build 490)\n" +
+                "Charset: utf-8\n" +
+                "\n" +
+                "wj8DBQFZu8TPDEcm8Vbi9kMRAtcMAKC6idpn3c7336BWJfAsUm/f+dwyKwCdH4X8\n" +
+                "hecXRicDNT6WR6AGFpWeSuI=\n" +
+                "=4fr+\n" +
+                "-----END PGP SIGNATURE-----\n");
+
+        getVmWareEmailDup.setTo("security-announce@lists.vmware.com");
+        getVmWareEmailDup.setSubject("[Security-announce] Updated VMSA-2017-0015.1 - VMware ESXi, vCenter Server, Fusion & Workstation updates resolve multiple security vulnerabilities");
+
+
+
         debianEmail.setContent("-----BEGIN PGP SIGNED MESSAGE-----\n" +
                 "Hash: SHA512\n" +
                 "\n" +
@@ -601,6 +832,7 @@ public class JUnitTextMiningMainEntrance {
         emails.add(vmWareEmail);
         emails.add(fdEmail);
         emails.add(nonValid);
+        emails.add(getVmWareEmailDup);
 
         ArrayList<RSS> rsses = new ArrayList<RSS>();
         rsses.add(usCertAlert);

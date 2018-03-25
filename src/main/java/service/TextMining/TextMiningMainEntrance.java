@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import service.TextMining.Correlation.Classification.Classification;
+import service.TextMining.Correlation.Clustering.Clustering;
 import service.TextMining.Correlation.Preprocessing.Preprocessing;
 
 
@@ -123,6 +124,9 @@ public class TextMiningMainEntrance {
         Classification classification = new Classification(this.miningEntities);
         classification.classify();
         classification.createVectorSpaceModel();
+
+        Clustering clustering = new Clustering(this.miningEntities);
+        clustering.conductClustering();
 
         /* For Testing purposes */
         for(MiningEntity min : miningEntities){
