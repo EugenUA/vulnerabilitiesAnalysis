@@ -107,14 +107,24 @@ configuration details used by Maven to build the project.
 # Technology Stack
 
 ## DAO
+This package contains all the code needed for manipulation with
+the database of all kinds. It defines the sub-package **interfaces**
+which contains the interfaces that are visible from other layers.
+In the **db** package the code for creation of tables is situated
+and in the **SQLiteWorkingPackage** the classes with basic CRUD
+operations for each table are situated.
+
+This package defines its own DAOException class. 
 
 ## Entities
-
-### Aggregation Entities
-
-### DatabaseEntities
-
-### Mining Entities
+There are three kinds of entities used in the program:
+* **Aggregation Entities** are classes that define the structure
+of the aggregated security advisories: Emails; HTMLs and RSS-feeds.
+* **dbEntities** are classes used for storing and retrieving the
+information in/from the database.
+* **Mining Entity** is the special kind of entity that is used
+for storing all relevant for data mining information and is actively
+used during the text mining.
 
 ## Service
 
@@ -157,6 +167,18 @@ aggregate them.
 ## User Interface (UI)
 
 ## Resources
+The package resources contains three important files:
+* **config.properties** is important file that contains the properties
+of the program, such as: email account credentials; links to rss-feeds
+and html web pages where the advisories come from.
+
+* **nonspamVector** und **spamVector**. For the classification part we use
+the so-called nonspamVector and spamVector. Each vector is a dictionary with
+words and their weights. The words in each dictionary are specifically
+selected, such that the words in nonspamVector are often observed in
+non-spam messages, and the words in spamVector are more often observed in
+spam vector. The weight of each word is computed by use of naive
+bayes classification algorithm.
 
 ## Tests
 

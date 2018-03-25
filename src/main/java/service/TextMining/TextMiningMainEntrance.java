@@ -13,6 +13,7 @@ import org.jsoup.Jsoup;
 import service.TextMining.Correlation.Classification.Classification;
 import service.TextMining.Correlation.Clustering.Clustering;
 import service.TextMining.Correlation.Preprocessing.Preprocessing;
+import service.TextMining.SaveVulnerabilities.SaveVulnerabilitiesToDB;
 
 
 public class TextMiningMainEntrance {
@@ -127,6 +128,10 @@ public class TextMiningMainEntrance {
 
         Clustering clustering = new Clustering(this.miningEntities);
         clustering.conductClustering();
+
+        SaveVulnerabilitiesToDB saveVulnerabilities = new SaveVulnerabilitiesToDB(
+                clustering.getMiningEntities(), clustering.getInternalClusters());
+        saveVulnerabilities.saveVulnerabilities();
 
         /* For Testing purposes */
         for(MiningEntity min : miningEntities){
