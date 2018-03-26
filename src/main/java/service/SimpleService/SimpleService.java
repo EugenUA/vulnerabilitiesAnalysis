@@ -18,7 +18,6 @@ public class SimpleService implements Service {
     private VulnerabilityDAO vulnerabilityDAO;
     private DescriptionDAO descriptionDAO;
     private ProductDAO productDAO;
-    private VulProdDAO vulProdDAO;
     private VulnerabilitiesSourcesDAO vulnerabilitiesSourcesDAO;
 
     public SimpleService() throws ServiceException {
@@ -27,7 +26,6 @@ public class SimpleService implements Service {
             this.vulnerabilityDAO = new SQLiteVulnerabilityDAO();
             this.descriptionDAO = new SQLiteDescriptionDAO();
             this.productDAO = new SQLiteProductDAO();
-            this.vulProdDAO = new SQLiteVulProdDAO();
             this.vulnerabilitiesSourcesDAO = new SQLiteVulnerabilitiesSourcesDAO();
         } catch(DAOException e){
             throw new ServiceException(e.getMessage());
@@ -234,36 +232,6 @@ public class SimpleService implements Service {
             throw new ServiceException(e.getMessage());
         }
     }
-
-    /* ------------------------------------------- VulProd -------------------------------------------------- */
-
-    @Override
-    public VulProd createVulProd(VulProd vulProd) throws ServiceException{
-        try {
-            return vulProdDAO.createVulProd(vulProd);
-        } catch (DAOException e) {
-            throw new ServiceException(e.getMessage());
-        }
-    }
-
-    @Override
-    public List<VulProd> getAllVulIdsForProd(Product product) throws ServiceException{
-        try {
-            return vulProdDAO.getAllVulIdsForProd(product);
-        } catch (DAOException e) {
-            throw new ServiceException(e.getMessage());
-        }
-    }
-
-    @Override
-    public List<VulProd> getAllProdIdsForVul(Vulnerability vulnerability) throws ServiceException{
-        try {
-            return vulProdDAO.getAllProdIdsForVul(vulnerability);
-        } catch (DAOException e) {
-            throw new ServiceException(e.getMessage());
-        }
-    }
-
 
     /* ------------------------------------- VulnerabilitiesSources ---------------------------------------- */
 

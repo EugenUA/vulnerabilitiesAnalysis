@@ -183,3 +183,4 @@ bayes classification algorithm.
 ## Tests
 
 # Summary and Final Notes
+To improve: products and versions

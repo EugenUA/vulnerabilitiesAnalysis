@@ -113,7 +113,6 @@ public class ParseRSS {
                 try {
 
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
-                    Date lastDate = sdf.parse(last_date);
                     Date pubDate = sdf.parse(entry.getPublishedDate().toString());
 
                     if(last_date.equals("")) {
@@ -128,6 +127,7 @@ public class ParseRSS {
 
                         rssAlerts.add(rssAlert);
                     } else {
+                        Date lastDate = sdf.parse(last_date);
                         if(lastDate.before(pubDate)){
                             RSS rssAlert = new RSS();
 

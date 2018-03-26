@@ -61,7 +61,7 @@ public class Clustering {
                     internalClusters.get(i).addAll(internalClusters.get(j));
                     internalClusters.remove(j);
 
-                    System.out.println(internalClusters);
+                    //System.out.println(internalClusters);
                 }
                 change = true;
             }

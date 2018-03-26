@@ -117,6 +117,10 @@ public class TextMiningMainEntrance {
 
     public void performTextMining(){
 
+        /*System.out.println("Emails: " + receivedEmails.size());
+        System.out.println("RSS: " + receivedRSS.size());
+        System.out.println("HTML: " + receivedHTML.size());*/
+
         this.buildMiningEntities();
 
         Preprocessing preprocessing = new Preprocessing(this.miningEntities);
@@ -134,12 +138,11 @@ public class TextMiningMainEntrance {
         saveVulnerabilities.saveVulnerabilities();
 
         /* For Testing purposes */
-        for(MiningEntity min : miningEntities){
-            for(int i = 0; i < min.getLong_tfidfDocsVector().length; i++) {
-                System.out.print(min.getLong_tfidfDocsVector()[i] + " ");
-            }
+       /* for(MiningEntity min : miningEntities){
+            System.out.println(min.getPreprocessed_short_description());
+            System.out.println(min.getPreprocessed_long_description());
             System.out.println();
-        }
+        }*/
 
     }
 }

@@ -27,9 +27,10 @@ public class SQLiteProductDAO implements ProductDAO {
     public Product createProduct(Product product) throws DAOException{
         con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
         try{
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO Product(name,version) VALUES (?,?)");
-            stmt.setString(1, product.getName());
-            stmt.setString(2, product.getVersion());
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO Product(vulnerability_id,name,version) VALUES (?,?,?)");
+            stmt.setInt(1,product.getVulnerability_id());
+            stmt.setString(2, product.getName());
+            stmt.setString(3, product.getVersion());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -73,9 +74,10 @@ public class SQLiteProductDAO implements ProductDAO {
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int id1 = rs.getInt(1);
-                String name = rs.getString(2);
+                int vulId = rs.getInt(2);
+                String name = rs.getString(3);
                 String version = rs.getString(3);
-                product = new Product (id1, name, version);
+                product = new Product (id1, vulId, name, version);
             }
             rs.close();
             pstmt.close();
@@ -91,15 +93,16 @@ public class SQLiteProductDAO implements ProductDAO {
         con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
         Product product = null;
         try{
-            String sql = "SELECT * FROM Product p WHERE p.name=?";
+            String sql = "SELECT * FROM Product p WHERE p.name LIKE '%?%'";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setString(1, name);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int id1 = rs.getInt(1);
-                String name1 = rs.getString(2);
+                int vulId = rs.getInt(2);
+                String name1 = rs.getString(3);
                 String version = rs.getString(3);
-                product = new Product (id1, name1, version);
+                product = new Product (id1, vulId, name1, version);
             }
             rs.close();
             pstmt.close();

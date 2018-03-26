@@ -73,7 +73,8 @@ public class SendGreetingEmail {
             message.setText("You are successfully registered to the Vulnerabilities Aggregation Service! \n \n" +
                     "YOUR PERSONAL INFORMATION: \n" +
                     "Login Name: " + userName + " \n" +
-                    "Password: " + userPassword + "\n  \n" +
+
+                    "\n"+
                     "If you don't want to have an account in Vulnerabilities Aggregation Service, please login and " +
                     "go to your personal cabinet, then choose the option to delete your account. \n" +
                     "If after the deletion you want to restore your account, please go to registration page and enter " +

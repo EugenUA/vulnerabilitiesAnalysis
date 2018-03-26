@@ -190,32 +190,6 @@ public interface Service {
      */
     Product getProductByName(String name) throws ServiceException;
 
-    /* ------------------------------------------- VulProd -------------------------------------------------- */
-
-    /**
-     * Create vulnerability to product relationship
-     * @param vulProd ... vulnerability to product relationship to create
-     * @return created vulnerability to product relationship
-     * @throws ServiceException
-     */
-    VulProd createVulProd(VulProd vulProd) throws ServiceException;
-
-    /**
-     * Get all vulnerability to product relationships for specified product
-     * @param product ... product for which we search vulnerabilities
-     * @return vulnerability to product relationships for specified product
-     * @throws ServiceException
-     */
-    List<VulProd> getAllVulIdsForProd(Product product) throws ServiceException;
-
-    /**
-     * Get all vulnerability to product relationships for specified vulnerability
-     * @param vulnerability ... vulnerability for which we search products
-     * @return vulnerability to product relationships for specified vulnerability
-     * @throws ServiceException
-     */
-    List<VulProd> getAllProdIdsForVul(Vulnerability vulnerability) throws ServiceException;
-
 
     /* ------------------------------------- VulnerabilitiesSources ---------------------------------------- */
 
