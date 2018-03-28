@@ -14,6 +14,14 @@ public interface ProductDAO {
     Product createProduct(Product product) throws DAOException;
 
     /**
+     * Get product
+     * @param product ... product to be retrieved
+     * @return retrieved product
+     * @throws DAOException
+     */
+    Product getProduct(Product product) throws DAOException;
+
+    /**
      * Update current product
      * @param product ... product to be updated
      * @return updated product

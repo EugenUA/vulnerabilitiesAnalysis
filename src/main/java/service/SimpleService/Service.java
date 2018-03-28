@@ -167,6 +167,14 @@ public interface Service {
     Product createProduct(Product product) throws ServiceException;
 
     /**
+     * Get Product
+     * @param product ... product to be retrieved
+     * @return retrieved product
+     * @throws ServiceException
+     */
+    Product getProduct(Product product) throws ServiceException;
+
+    /**
      * Update product
      * @param product ... product to be updated
      * @return updated product
@@ -190,6 +198,14 @@ public interface Service {
      */
     Product getProductByName(String name) throws ServiceException;
 
+    /* ------------------------------------- VulProd ------------------------------------------------------ */
+    /**
+     * Create VulProd
+     * @param vulProd ... product to be created
+     * @return created product
+     * @throws ServiceException
+     */
+    VulProd createVulProd(VulProd vulProd) throws ServiceException;
 
     /* ------------------------------------- VulnerabilitiesSources ---------------------------------------- */
 

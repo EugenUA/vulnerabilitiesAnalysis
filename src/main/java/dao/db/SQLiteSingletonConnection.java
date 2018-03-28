@@ -25,6 +25,7 @@ public class SQLiteSingletonConnection {
     private SQLiteCreate_Vulnerabilities_Table createVulnerabilitiesTable;
     private SQLiteCreate_Description_Table createDescriptionTable;
     private SQLiteCreate_Product_Table createProductTable;
+    private SQLiteCreate_VulProd_Table createvulProdTable;
     private SQLiteCreate_VulnerabilitiesSources_Table createVulnerabilitiesSourcesTable;
 
     private SQLiteSingletonConnection() throws DAOException {
@@ -47,6 +48,10 @@ public class SQLiteSingletonConnection {
             /* Creation of product table */
             createProductTable = new SQLiteCreate_Product_Table(con);
             createProductTable.createProductTable();
+
+            /* Create vulProd table */
+            createvulProdTable = new SQLiteCreate_VulProd_Table(con);
+            createvulProdTable.createVulProdTable();
 
             /* Creation of Vulnerabilities Sources table */
             createVulnerabilitiesSourcesTable = new SQLiteCreate_VulnerabilitiesSources_Table(con);

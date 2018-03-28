@@ -3,7 +3,6 @@ package entities.dbEntities;
 public class Product {
 
     private int id;
-    private int vulnerability_id;
     private String name;
     private String version;
 
@@ -11,9 +10,8 @@ public class Product {
 
     }
 
-    public Product(int id, int vulnerability_id, String name, String version) {
+    public Product(int id, String name, String version) {
         this.id = id;
-        this.vulnerability_id = vulnerability_id;
         this.name = name;
         this.version = version;
     }
@@ -42,14 +40,6 @@ public class Product {
         this.version = version;
     }
 
-    public int getVulnerability_id() {
-        return vulnerability_id;
-    }
-
-    public void setVulnerability_id(int vulnerability_id) {
-        this.vulnerability_id = vulnerability_id;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -58,7 +48,6 @@ public class Product {
         Product product = (Product) o;
 
         if (id != product.id) return false;
-        if (vulnerability_id != product.vulnerability_id) return false;
         if (name != null ? !name.equals(product.name) : product.name != null) return false;
         return version != null ? version.equals(product.version) : product.version == null;
     }
@@ -66,7 +55,6 @@ public class Product {
     @Override
     public int hashCode() {
         int result = id;
-        result = 31 * result + vulnerability_id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (version != null ? version.hashCode() : 0);
         return result;
@@ -76,7 +64,6 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", vulnerability_id=" + vulnerability_id +
                 ", name='" + name + '\'' +
                 ", version='" + version + '\'' +
                 '}';

@@ -2,15 +2,14 @@ package service.TextMining.SaveVulnerabilities;
 
 import entities.dbEntities.Description;
 import entities.dbEntities.Product;
+import entities.dbEntities.VulProd;
 import entities.dbEntities.Vulnerability;
 import entities.miningEntities.MiningEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import service.ServiceException;
-import service.SimpleService.Service;
 import service.SimpleService.SimpleService;
-import service.TextMining.Correlation.Clustering.Clustering;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -21,11 +20,14 @@ import java.util.regex.Pattern;
 
 public class SaveVulnerabilitiesToDB {
 
-    private final static Logger logger = LogManager.getLogger(Clustering.class);
+    private final static Logger logger = LogManager.getLogger(SaveVulnerabilitiesToDB.class);
     private ArrayList<MiningEntity> miningEntities;
     private ArrayList<ArrayList<Integer>> internalClusters;
 
     private SimpleService simpleService;
+
+    private int VulnerabilitiesCounter = 0;
+    private int Productcounter = 0;
 
     public SaveVulnerabilitiesToDB(ArrayList<MiningEntity> miningEntities,
                                    ArrayList<ArrayList<Integer>> internalClusters){
@@ -45,7 +47,8 @@ public class SaveVulnerabilitiesToDB {
             /* Create DB Entities */
             Description description = new Description();
             ArrayList<Vulnerability> vulnerabilities = new ArrayList<Vulnerability>();
-            Product product;
+            Product product = new Product();
+            VulProd vulProd = new VulProd();
 
             /* CVEs */
             ArrayList<String> cves = new ArrayList<String>();
@@ -82,7 +85,6 @@ public class SaveVulnerabilitiesToDB {
 
                 /* Product */
                 product = this.productFinder(miningEntities.get(clusterElement));
-                System.out.println(product);
             }
 
             for(Integer clusterElement : cluster){
@@ -116,8 +118,46 @@ public class SaveVulnerabilitiesToDB {
 
             /* FROM THIS POINT VULNERABILITIES, DESCRIPTIONS and PRODUCTS ARE ALL SPECIFIED */
 
+            for(Vulnerability vulnerability : vulnerabilities){
+                try {
+                    /* PUT VULNERABILITY INTO DB */
+                    if(simpleService.getVulnerabilityByCVE(vulnerability.getCve()) == null) {
+                        simpleService.createVulnerability(vulnerability);
+                        VulnerabilitiesCounter++;
+
+                    /* PUT DESCRIPTION INTO DB */
+                        description.setVulnerability_id(vulnerability.getId());
+                        simpleService.createDescription(description);
+
+                    /* PUT PRODUCT INTO DB */
+                        if (simpleService.getProduct(product) == null) {
+
+                            simpleService.createProduct(product);
+                            vulProd = new VulProd(vulnerability.getId(), product.getId());
+                            simpleService.createVulProd(vulProd);
+                            Productcounter++;
+
+                        } else {
+
+                            Product product1 = simpleService.getProduct(product);
+                            vulProd = new VulProd(vulnerability.getId(), product1.getId());
+                            simpleService.createVulProd(vulProd);
+                        }
+                    }
+
+                } catch(ServiceException e){
+                    System.out.println(e.getMessage());
+                }
+            }
+
         }
 
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Aggregated advisories : " + miningEntities.size());
+        System.out.println("Inserted new : ");
+        System.out.println("              Vulnerabilities : " + VulnerabilitiesCounter);
+        System.out.println("              Products        : " + Productcounter);
+        System.out.println("-------------------------------------------------------------");
 
     }
 

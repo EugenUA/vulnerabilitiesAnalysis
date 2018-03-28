@@ -19,6 +19,7 @@ public class SimpleService implements Service {
     private DescriptionDAO descriptionDAO;
     private ProductDAO productDAO;
     private VulnerabilitiesSourcesDAO vulnerabilitiesSourcesDAO;
+    private VulProdDAO vulProdDAO;
 
     public SimpleService() throws ServiceException {
         try{
@@ -27,6 +28,7 @@ public class SimpleService implements Service {
             this.descriptionDAO = new SQLiteDescriptionDAO();
             this.productDAO = new SQLiteProductDAO();
             this.vulnerabilitiesSourcesDAO = new SQLiteVulnerabilitiesSourcesDAO();
+            this.vulProdDAO = new SQLiteVulProdDAO();
         } catch(DAOException e){
             throw new ServiceException(e.getMessage());
         }
@@ -207,6 +209,15 @@ public class SimpleService implements Service {
     }
 
     @Override
+    public Product getProduct(Product product) throws ServiceException{
+        try{
+            return productDAO.getProduct(product);
+        } catch(DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
     public Product updateProduct(Product product) throws ServiceException{
         try {
             return productDAO.updateProduct(product);
@@ -232,6 +243,18 @@ public class SimpleService implements Service {
             throw new ServiceException(e.getMessage());
         }
     }
+
+    /* ---------------------------------------- VulProd ------------------------------------------------------*/
+
+    @Override
+    public VulProd createVulProd(VulProd vulProd) throws ServiceException {
+        try{
+            return vulProdDAO.createVulProd(vulProd);
+        } catch(DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
 
     /* ------------------------------------- VulnerabilitiesSources ---------------------------------------- */
 

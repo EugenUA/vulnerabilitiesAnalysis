@@ -27,10 +27,9 @@ public class SQLiteProductDAO implements ProductDAO {
     public Product createProduct(Product product) throws DAOException{
         con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
         try{
-            PreparedStatement stmt = con.prepareStatement("INSERT INTO Product(vulnerability_id,name,version) VALUES (?,?,?)");
-            stmt.setInt(1,product.getVulnerability_id());
-            stmt.setString(2, product.getName());
-            stmt.setString(3, product.getVersion());
+            PreparedStatement stmt = con.prepareStatement("INSERT INTO Product(name,version) VALUES (?,?)");
+            stmt.setString(1, product.getName());
+            stmt.setString(2, product.getVersion());
             stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
@@ -46,6 +45,31 @@ public class SQLiteProductDAO implements ProductDAO {
     }
 
     @Override
+    public Product getProduct(Product product) throws DAOException {
+        con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
+        Product product1 = null;
+        try{
+            String sql = "SELECT * FROM Product p WHERE p.name=? AND p.version=?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1,product.getName());
+            pstmt.setString(2,product.getVersion());
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                int id1 = rs.getInt(1);
+                String name = rs.getString(2);
+                String version = rs.getString(3);
+                product1 = new Product (id1, name, version);
+            }
+            rs.close();
+            pstmt.close();
+            return product1;
+        } catch (SQLException e) {
+            logger.debug(e.getMessage());
+            throw new DAOException(e.getMessage());
+        }
+    }
+
+    @Override
     public Product updateProduct(Product product) throws DAOException{
         con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
         try{
@@ -53,7 +77,7 @@ public class SQLiteProductDAO implements ProductDAO {
                     "UPDATE Product SET name=?, version=? WHERE id=?");
             stmt.setString(1, product.getName());
             stmt.setString(2, product.getVersion());
-            stmt.setInt(7, product.getId());
+            stmt.setInt(3, product.getId());
             stmt.executeUpdate();
             con.commit();
             return product;
@@ -74,10 +98,9 @@ public class SQLiteProductDAO implements ProductDAO {
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int id1 = rs.getInt(1);
-                int vulId = rs.getInt(2);
-                String name = rs.getString(3);
+                String name = rs.getString(2);
                 String version = rs.getString(3);
-                product = new Product (id1, vulId, name, version);
+                product = new Product (id1, name, version);
             }
             rs.close();
             pstmt.close();
@@ -99,10 +122,9 @@ public class SQLiteProductDAO implements ProductDAO {
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int id1 = rs.getInt(1);
-                int vulId = rs.getInt(2);
-                String name1 = rs.getString(3);
+                String name1 = rs.getString(2);
                 String version = rs.getString(3);
-                product = new Product (id1, vulId, name1, version);
+                product = new Product (id1, name1, version);
             }
             rs.close();
             pstmt.close();

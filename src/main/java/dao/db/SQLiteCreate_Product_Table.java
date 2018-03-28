@@ -26,10 +26,8 @@ public class SQLiteCreate_Product_Table {
             stmt = con.createStatement();
             String sql = "CREATE TABLE IF NOT EXISTS Product" +
                     "(id INTEGER PRIMARY KEY AUTOINCREMENT, "+
-                    "vulnerability_id INTEGER, " +
                     " name TEXT, " +
-                    " version TEXT, "+
-                    " FOREIGN KEY(vulnerability_id) REFERENCES Vulnerability(id));";
+                    " version TEXT);";
             stmt.executeUpdate(sql);
             stmt.close();
         } catch(SQLException e){
