@@ -236,10 +236,28 @@ public class SimpleService implements Service {
     }
 
     @Override
-    public Product getProductByName(String name) throws ServiceException{
+    public List<Product> getProductByName(String name) throws ServiceException{
         try {
             return productDAO.getProductByName(name);
         } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilityByProductName(String name) throws ServiceException{
+        try{
+            return productDAO.getVulnerabilityByProductName(name);
+        } catch(DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilityByProductNameAndDate(String name, String date) throws ServiceException{
+        try{
+            return productDAO.getVulnerabilityByProductNameAndDate(name,date);
+        } catch(DAOException e){
             throw new ServiceException(e.getMessage());
         }
     }

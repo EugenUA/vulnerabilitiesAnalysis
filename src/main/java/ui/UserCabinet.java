@@ -34,8 +34,12 @@ public class UserCabinet {
 
         while(flag){
             System.out.println("LEGEND:");
+            System.out.println("--------");
             System.out.println("PRESS 'U' to update your credentials, change password or delete your page;");
-            // TODO OTHER POSSIBILITIES FOR USER (incl. VULNER. AGGR.)
+            System.out.println("--------");
+            System.out.println("PRESS 'P' to search for products");
+            System.out.println("PRESS 'V' to search for vulnerabilities");
+            System.out.println("--------");
             System.out.println("PRESS 'Q' to quit the application.");
             System.out.print("PRESS A KEY: ");
             key = scanner.nextLine();
@@ -49,6 +53,11 @@ public class UserCabinet {
                 } else {
                     System.out.println("WELCOME TO YOUR PERSONAL CABINET, " + user.getName() + "!");
                 }
+            }
+
+            if(key.equals("P") || key.equals("p")){
+                ProductsSearch pp = new ProductsSearch(user,service);
+                pp.searchByProduct();
             }
 
             if(key.equals("Q") || key.equals("q")){

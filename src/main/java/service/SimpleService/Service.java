@@ -196,7 +196,11 @@ public interface Service {
      * @return product by its name
      * @throws ServiceException
      */
-    Product getProductByName(String name) throws ServiceException;
+    List<Product> getProductByName(String name) throws ServiceException;
+
+    List<Vulnerability> getVulnerabilityByProductName(String name) throws ServiceException;
+
+    List<Vulnerability> getVulnerabilityByProductNameAndDate(String name, String date) throws ServiceException;
 
     /* ------------------------------------- VulProd ------------------------------------------------------ */
     /**

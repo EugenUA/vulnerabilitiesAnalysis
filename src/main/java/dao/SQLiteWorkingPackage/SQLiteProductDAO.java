@@ -4,6 +4,7 @@ import dao.DAOException;
 import dao.db.SQLiteSingletonConnection;
 import dao.interfaces.ProductDAO;
 import entities.dbEntities.Product;
+import entities.dbEntities.Vulnerability;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -11,6 +12,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLiteProductDAO implements ProductDAO {
 
@@ -112,23 +115,90 @@ public class SQLiteProductDAO implements ProductDAO {
     }
 
     @Override
-    public Product getProductByName(String name) throws DAOException{
+    public List<Product> getProductByName(String name) throws DAOException{
         con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
+        List<Product> products = new ArrayList<Product>();
         Product product = null;
         try{
-            String sql = "SELECT * FROM Product p WHERE p.name LIKE '%?%'";
+            String sql = "SELECT * FROM Product p WHERE p.name LIKE ?";
             PreparedStatement pstmt = con.prepareStatement(sql);
-            pstmt.setString(1, name);
+            pstmt.setString(1, "%" + name + "%");
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()){
                 int id1 = rs.getInt(1);
                 String name1 = rs.getString(2);
                 String version = rs.getString(3);
                 product = new Product (id1, name1, version);
+                products.add(product);
             }
             rs.close();
             pstmt.close();
-            return product;
+            return products;
+        } catch (SQLException e) {
+            logger.debug(e.getMessage());
+            throw new DAOException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilityByProductName(String name) throws DAOException{
+        con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
+        List<Vulnerability> vulnerabilities = new ArrayList<Vulnerability>();
+        Vulnerability vulnerability = null;
+        try{
+            String sql = "SELECT v.* " +
+                    "FROM Product p JOIN VulProd vp ON p.id = vp.product_id JOIN Vulnerability v ON v.id = vp.vulnerability_id " +
+                    "WHERE p.name LIKE ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + name + "%");
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                int id1 = rs.getInt(1);
+                String name1 = rs.getString(2);
+                String cve = rs.getString(3);
+                String cvss = rs.getString(4);
+                String date = rs.getString(5);
+                String source = rs.getString(6);
+                String source_type = rs.getString(7);
+                vulnerability = new Vulnerability(id1, name1, cve, cvss, date, source, source_type);
+                vulnerabilities.add(vulnerability);
+            }
+            rs.close();
+            pstmt.close();
+            return vulnerabilities;
+        } catch (SQLException e) {
+            logger.debug(e.getMessage());
+            throw new DAOException(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Vulnerability> getVulnerabilityByProductNameAndDate(String name, String date) throws DAOException{
+        con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
+        List<Vulnerability> vulnerabilities = new ArrayList<Vulnerability>();
+        Vulnerability vulnerability = null;
+        try{
+            String sql = "SELECT v.* " +
+                    "FROM Product p JOIN VulProd vp ON p.id = vp.product_id JOIN Vulnerability v ON v.id = vp.vulnerability_id " +
+                    "WHERE p.name LIKE ? AND v.date > ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "%" + name + "%");
+            pstmt.setString(2, date);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next()){
+                int id1 = rs.getInt(1);
+                String name1 = rs.getString(2);
+                String cve = rs.getString(3);
+                String cvss = rs.getString(4);
+                String date1 = rs.getString(5);
+                String source = rs.getString(6);
+                String source_type = rs.getString(7);
+                vulnerability = new Vulnerability(id1, name1, cve, cvss, date1, source, source_type);
+                vulnerabilities.add(vulnerability);
+            }
+            rs.close();
+            pstmt.close();
+            return vulnerabilities;
         } catch (SQLException e) {
             logger.debug(e.getMessage());
             throw new DAOException(e.getMessage());

@@ -2,6 +2,9 @@ package dao.interfaces;
 
 import dao.DAOException;
 import entities.dbEntities.Product;
+import entities.dbEntities.Vulnerability;
+
+import java.util.List;
 
 public interface ProductDAO {
 
@@ -43,6 +46,12 @@ public interface ProductDAO {
      * @return searched product
      * @throws DAOException
      */
-    Product getProductByName(String name) throws DAOException;
+    List<Product> getProductByName(String name) throws DAOException;
+
+    /* JOINED QUERIES */
+
+    List<Vulnerability> getVulnerabilityByProductName(String name) throws DAOException;
+
+    List<Vulnerability> getVulnerabilityByProductNameAndDate(String name, String date) throws DAOException;
 
 }

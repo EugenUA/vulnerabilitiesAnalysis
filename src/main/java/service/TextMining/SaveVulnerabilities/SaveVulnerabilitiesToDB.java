@@ -152,12 +152,14 @@ public class SaveVulnerabilitiesToDB {
 
         }
 
-        System.out.println("-------------------------------------------------------------");
-        System.out.println("Aggregated advisories : " + miningEntities.size());
-        System.out.println("Inserted new : ");
-        System.out.println("              Vulnerabilities : " + VulnerabilitiesCounter);
-        System.out.println("              Products        : " + Productcounter);
-        System.out.println("-------------------------------------------------------------");
+        if(miningEntities.size() > 0) {
+            System.out.println("-------------------------------------------------------------");
+            System.out.println("Aggregated advisories : " + miningEntities.size());
+            System.out.println("Inserted new : ");
+            System.out.println("              Vulnerabilities : " + VulnerabilitiesCounter);
+            System.out.println("              Products        : " + Productcounter);
+            System.out.println("-------------------------------------------------------------");
+        }
 
     }
 
