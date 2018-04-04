@@ -78,7 +78,7 @@ public class SQLiteDescriptionDAO implements DescriptionDAO {
         con = SQLiteSingletonConnection.reconnectIfConnectionToDatabaseLost();
         Description description = null;
         try{
-            String sql = "SELECT * FROM Description d WHERE d.vulnerabilitiy_id=?";
+            String sql = "SELECT * FROM Description d WHERE d.vulnerability_id=?";
             PreparedStatement pstmt = con.prepareStatement(sql);
             pstmt.setInt(1, vulnerability.getId());
             ResultSet rs = pstmt.executeQuery();

@@ -1,8 +1,12 @@
-package ui;
+package ui.UserCabinet;
 import entities.dbEntities.User;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import service.SimpleService.Service;
+import ui.Authentication_UpdateCredentials.UpdateUserCredentials;
+import ui.Vulnerability_Product_Search.ProductsSearch;
+import ui.Vulnerability_Product_Search.VulnerabilitiesSearch;
+import ui.WelcomePage;
 
 import java.util.Scanner;
 
@@ -40,6 +44,8 @@ public class UserCabinet {
             System.out.println("PRESS 'P' to search for products");
             System.out.println("PRESS 'V' to search for vulnerabilities");
             System.out.println("--------");
+            System.out.println("PRESS 'S' to see some statistics");
+            System.out.println("--------");
             System.out.println("PRESS 'Q' to quit the application.");
             System.out.print("PRESS A KEY: ");
             key = scanner.nextLine();
@@ -58,6 +64,11 @@ public class UserCabinet {
             if(key.equals("P") || key.equals("p")){
                 ProductsSearch pp = new ProductsSearch(user,service);
                 pp.searchByProduct();
+            }
+
+            if(key.equals("V") || key.equals("v")){
+                VulnerabilitiesSearch vs = new VulnerabilitiesSearch(user, service);
+                vs.searchbyVulnerability();
             }
 
             if(key.equals("Q") || key.equals("q")){

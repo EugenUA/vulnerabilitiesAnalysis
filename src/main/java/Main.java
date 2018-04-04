@@ -7,7 +7,7 @@ import service.SimpleService.Service;
 import service.ServiceException;
 import service.SimpleService.SimpleService;
 import service.TextMining.TextMiningMainEntrance;
-import ui.UserCabinet;
+import ui.UserCabinet.UserCabinet;
 import ui.WelcomePage;
 
 import java.util.concurrent.Executors;
@@ -37,17 +37,20 @@ public class Main {
                 scheduler.scheduleAtFixedRate(()->{
                      /* POLLING BEGIN */
 
+                     // aggregate alerts from all the sources
                      aggregationMainEntrance.aggregateSecurityAlerts();
 
+                     // create mining entities and feed them to text mining module
                      textMiningMainEntrance.setReceivedEmails(aggregationMainEntrance.getReceivedEmails());
                      textMiningMainEntrance.setReceivedHTML(aggregationMainEntrance.getReceivedHTML());
                      textMiningMainEntrance.setReceivedRSS(aggregationMainEntrance.getReceivedRSS());
 
+                     // conduct text mining
                      textMiningMainEntrance.performTextMining();
 
 
                      /* END OF POLLING */
-                }, 0, 3L, TimeUnit.MINUTES);
+                }, 0, 3L, TimeUnit.MINUTES);  // initial delay: 0 Minutes;  delay: 3 Minutes
 
 
                 try {

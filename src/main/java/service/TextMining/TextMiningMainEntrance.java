@@ -7,7 +7,10 @@ import entities.miningEntities.MiningEntity;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import org.jsoup.Jsoup;
 import service.TextMining.Correlation.Classification.Classification;
@@ -63,7 +66,12 @@ public class TextMiningMainEntrance {
                 MiningEntity miningEntity = new MiningEntity();
                 miningEntity.setShort_description(email.getSubject().replaceAll("\\[.*?\\] ",""));
                 miningEntity.setLong_description(deletePGPSigning(email.getContent()));
-                miningEntity.setDate(email.getReceivedDate());
+                if(email.getReceivedDate() == null) {
+                    String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+                    miningEntity.setDate(date);
+                }else{
+                    miningEntity.setDate(email.getReceivedDate());
+                }
                 miningEntity.setSource(email.getTo());
                 miningEntity.setSource_type("EMAIL");
 

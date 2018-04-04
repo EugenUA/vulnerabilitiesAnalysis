@@ -1,4 +1,4 @@
-package ui;
+package ui.Authentication_UpdateCredentials;
 
 import entities.dbEntities.User;
 import org.apache.commons.codec.digest.DigestUtils;

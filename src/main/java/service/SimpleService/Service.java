@@ -92,11 +92,11 @@ public interface Service {
 
     /**
      * Get vulnerability by its name
-     * @param name ... name of vulnerability under search
+     * @param id ... id of vulnerability under search
      * @return vulnerability by its name
      * @throws ServiceException
      */
-    Vulnerability getVulnerabilityByName(String name) throws ServiceException;
+    Vulnerability getVulnerabilityById(Long id) throws ServiceException;
 
     /**
      * Get vulnerability by its CVE
@@ -104,7 +104,7 @@ public interface Service {
      * @return vulnerability by its cve
      * @throws ServiceException
      */
-    Vulnerability getVulnerabilityByCVE(String cve) throws ServiceException;
+    List<Vulnerability> getVulnerabilityByCVE(String cve) throws ServiceException;
 
     /**
      * Get vulnerabilities by its date

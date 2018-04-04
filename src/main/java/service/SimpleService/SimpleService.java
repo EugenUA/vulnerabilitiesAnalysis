@@ -124,16 +124,16 @@ public class SimpleService implements Service {
     }
 
     @Override
-    public Vulnerability getVulnerabilityByName(String name) throws ServiceException{
+    public Vulnerability getVulnerabilityById(Long id) throws ServiceException{
         try {
-            return vulnerabilityDAO.getVulnerabilityByName(name);
+            return vulnerabilityDAO.getVulnerabilityById(id);
         } catch (DAOException e){
             throw new ServiceException(e.getMessage());
         }
     }
 
     @Override
-    public Vulnerability getVulnerabilityByCVE(String cve) throws ServiceException{
+    public List<Vulnerability> getVulnerabilityByCVE(String cve) throws ServiceException{
         try {
             return vulnerabilityDAO.getVulnerabilityByCVE(cve);
         } catch (DAOException e) {

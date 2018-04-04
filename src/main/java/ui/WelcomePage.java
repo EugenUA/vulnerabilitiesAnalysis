@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import service.ProgramService.SendGreetingEmail.SendGreetingEmail;
 import service.SimpleService.Service;
 import service.ServiceException;
+import ui.Authentication_UpdateCredentials.UserAuthentication;
 
 import java.util.Scanner;
 

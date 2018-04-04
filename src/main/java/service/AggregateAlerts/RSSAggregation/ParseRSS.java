@@ -123,7 +123,7 @@ public class ParseRSS {
                         rssAlert.setTitle(entry.getTitle());
                         rssAlert.setDescription(entry.getDescription().getValue());
                         rssAlert.setLink(entry.getLink());
-                        rssAlert.setPubDate(entry.getPublishedDate().toString());
+                        rssAlert.setPubDate(new SimpleDateFormat("yyyy-MM-dd").format(entry.getPublishedDate()));
 
                         rssAlerts.add(rssAlert);
                     } else {
@@ -135,7 +135,7 @@ public class ParseRSS {
                             rssAlert.setTitle(entry.getTitle());
                             rssAlert.setDescription(entry.getDescription().getValue());
                             rssAlert.setLink(entry.getLink());
-                            rssAlert.setPubDate(entry.getPublishedDate().toString());
+                            rssAlert.setPubDate(new SimpleDateFormat("yyyy-MM-dd").format(entry.getPublishedDate()));
 
                             rssAlerts.add(rssAlert);
                         } else {
