@@ -775,7 +775,7 @@ public class JUnitTextMiningMainEntrance {
                 "\t\t<hr />\n" +
                 "\t\t<p>This product is provided subject to this <a href=\"http://www.us-cert.gov/privacy/notification\">Notification</a> and this <a href=\"http://www.us-cert.gov/privacy/\">Privacy &#38; Use</a> policy.</p>\t\t<br />\n" +
                 "\t");
-        usCertAlert.setPubDate("Tue Nov 14 20:00:38 CET 2017");
+        usCertAlert.setPubDate("2017/11/14");
 
 
         /* Setting Cisco Alert UP */
@@ -804,7 +804,7 @@ public class JUnitTextMiningMainEntrance {
                 "\t\t       <br/>CVE: CVE-2017-12337\n" +
                 "\t\t    \n" +
                 "         ");
-        ciscoAlert.setPubDate("Wed Nov 15 23:00:00 CET 2017");
+        ciscoAlert.setPubDate("2017/11/15");
 
         /* Setting BugTraq Alert Up */
         bugtraqAlert.setOrigin("Bugtraq");
@@ -822,7 +822,7 @@ public class JUnitTextMiningMainEntrance {
                 "Credits:        TJ Corley<br>\n" +
                 "Affects:        All supported versions of FreeBSD.<br>\n" +
                 "Corrected:...<br>");
-        bugtraqAlert.setPubDate("Fri Nov 17 03:36:42 CET 2017");
+        bugtraqAlert.setPubDate("2017/11/17");
     }
 
     @Test

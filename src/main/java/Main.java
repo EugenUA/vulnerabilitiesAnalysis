@@ -40,6 +40,8 @@ public class Main {
                      // aggregate alerts from all the sources
                      aggregationMainEntrance.aggregateSecurityAlerts();
 
+                     //System.out.println("AGGREGATION END");
+
                      // create mining entities and feed them to text mining module
                      textMiningMainEntrance.setReceivedEmails(aggregationMainEntrance.getReceivedEmails());
                      textMiningMainEntrance.setReceivedHTML(aggregationMainEntrance.getReceivedHTML());
@@ -48,6 +50,7 @@ public class Main {
                      // conduct text mining
                      textMiningMainEntrance.performTextMining();
 
+                     //System.out.println("TEXT MINING END");
 
                      /* END OF POLLING */
                 }, 0, 3L, TimeUnit.MINUTES);  // initial delay: 0 Minutes;  delay: 3 Minutes

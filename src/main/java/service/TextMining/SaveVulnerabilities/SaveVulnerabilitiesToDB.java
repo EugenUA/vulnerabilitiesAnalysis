@@ -12,6 +12,7 @@ import service.ServiceException;
 import service.SimpleService.SimpleService;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -96,7 +97,7 @@ public class SaveVulnerabilitiesToDB {
                     vulnerability.setCvss(cvss);
                     vulnerability.setSource_type(miningEntities.get(clusterElement).getSource_type());
                     vulnerability.setSource(miningEntities.get(clusterElement).getSource());
-                    vulnerability.setDate(miningEntities.get(clusterElement).getDate());
+                    vulnerability.setDate(miningEntities.get(clusterElement).getDate().replaceAll("/","-"));
                     vulnerabilities.add(vulnerability);
                 } else {
                     for(String cve : cves){
@@ -108,7 +109,7 @@ public class SaveVulnerabilitiesToDB {
                         vulnerability.setCvss(cvss);
                         vulnerability.setSource_type(miningEntities.get(clusterElement).getSource_type());
                         vulnerability.setSource(miningEntities.get(clusterElement).getSource());
-                        vulnerability.setDate(miningEntities.get(clusterElement).getDate());
+                        vulnerability.setDate(miningEntities.get(clusterElement).getDate().replaceAll("/","-"));
                         if(!vulnerabilities.contains(vulnerability)) {
                             vulnerabilities.add(vulnerability);
                         }
@@ -121,7 +122,7 @@ public class SaveVulnerabilitiesToDB {
             for(Vulnerability vulnerability : vulnerabilities){
                 try {
                     /* PUT VULNERABILITY INTO DB */
-                    if(simpleService.getVulnerabilityByCVE(vulnerability.getCve()) == null) {
+                    if(simpleService.getVulnerabilityByCVE(vulnerability.getCve()).isEmpty()) {
                         simpleService.createVulnerability(vulnerability);
                         VulnerabilitiesCounter++;
 

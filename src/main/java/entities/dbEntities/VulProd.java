@@ -2,8 +2,8 @@ package entities.dbEntities;
 
 public class VulProd {
 
-    private Integer vulnerability_id;
-    private Integer product_id;
+    private int vulnerability_id;
+    private int product_id;
 
     public VulProd(){}
 

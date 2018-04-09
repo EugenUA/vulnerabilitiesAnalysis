@@ -39,7 +39,6 @@ public class AggregationMainEntrance {
         receivedEmails = aggregateSecurityAlertsIncomingFromEmail();
         receivedRSS = aggregateSecurityAlertsIncomingFromRSSFeeds();
         receivedHTML = aggregateSecurityAlertsIncomingFromHTMLWebPages();
-
     }
 
     public ArrayList<Email> getReceivedEmails() {
@@ -82,13 +81,13 @@ public class AggregationMainEntrance {
             parseRSSFeed.readRSSSources();
             ArrayList<RSS> rssAlerts = parseRSSFeed.getRssAlerts();
 
-           /* for(RSS alert : rssAlerts){
+            /*for(RSS alert : rssAlerts){
                 System.out.println("--------------------------------------------");
                 System.out.println(alert);
                 System.out.println("---------------------------------------------");
-            }*/
+            }
 
-            //System.out.println("RSS-feeds checked! " + "Number of received advisories: " + rssAlerts.size());
+            System.out.println("RSS-feeds checked! " + "Number of received advisories: " + rssAlerts.size());*/
             return rssAlerts;
         } catch(ServiceException e) {
             System.out.println("Due to connection problems the RSS-feeds cannot be checked!");
@@ -106,13 +105,13 @@ public class AggregationMainEntrance {
 
             ArrayList<HTML> htmlAlerts = parseHTML.getAlerts();
 
-           /* for(HTMLAlert alert : htmlAlerts){
+            /*for(HTML alert : htmlAlerts){
                 System.out.println("--------------------------------------------");
                 System.out.println(alert);
                 System.out.println("---------------------------------------------");
-            } */
+            }
 
-            //System.out.println("Web pages checked! " + "Number of received advisories: " + htmlAlerts.size());
+            System.out.println("Web pages checked! " + "Number of received advisories: " + htmlAlerts.size());*/
             return htmlAlerts;
         } catch (ServiceException e){
             System.out.println("Due to connection problems the Web pages cannot be checked!");
