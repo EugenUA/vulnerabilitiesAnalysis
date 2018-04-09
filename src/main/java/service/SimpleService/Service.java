@@ -1,7 +1,9 @@
 package service.SimpleService;
+import dao.DAOException;
 import entities.dbEntities.*;
 import service.ServiceException;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -129,6 +131,10 @@ public interface Service {
      * @throws ServiceException
      */
     List<Vulnerability> getVulnerabilitiesBySourceType(String source_type) throws ServiceException;
+
+    HashMap<String, Integer> getNumberOfVulnerabilitiesBy() throws ServiceException;
+    HashMap<String, Integer> getNumberOfVulnerabilitiesByDateOne(String date) throws ServiceException;
+    HashMap<String, Integer> getNumberOfVulnerabilitiesFromDate(String date) throws ServiceException;
 
     /* ----------------------------------------- DESCRIPTION ----------------------------------------------- */
 

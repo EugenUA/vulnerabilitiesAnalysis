@@ -4,6 +4,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import service.SimpleService.Service;
 import ui.Authentication_UpdateCredentials.UpdateUserCredentials;
+import ui.Statistics.Statistics;
 import ui.Vulnerability_Product_Search.ProductsSearch;
 import ui.Vulnerability_Product_Search.VulnerabilitiesSearch;
 import ui.WelcomePage;
@@ -69,6 +70,11 @@ public class UserCabinet {
             if(key.equals("V") || key.equals("v")){
                 VulnerabilitiesSearch vs = new VulnerabilitiesSearch(user, service);
                 vs.searchbyVulnerability();
+            }
+
+            if(key.equals("S") || key.equals("s")){
+                Statistics statistics = new Statistics(user, service);
+                statistics.getStatistics();
             }
 
             if(key.equals("Q") || key.equals("q")){

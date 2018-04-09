@@ -9,6 +9,7 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import service.ServiceException;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class SimpleService implements Service {
@@ -164,6 +165,33 @@ public class SimpleService implements Service {
         try {
             return vulnerabilityDAO.getVulnerabilitiesBySourceType(source_type);
         } catch (DAOException e) {
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public HashMap<String, Integer> getNumberOfVulnerabilitiesBy() throws ServiceException{
+        try{
+            return vulnerabilityDAO.getNumberOfVulnerabilitiesBy();
+        } catch(DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public HashMap<String, Integer> getNumberOfVulnerabilitiesByDateOne(String date) throws ServiceException{
+        try{
+            return vulnerabilityDAO.getNumberOfVulnerabilitiesByDateOne(date);
+        } catch( DAOException e){
+            throw new ServiceException(e.getMessage());
+        }
+    }
+
+    @Override
+    public HashMap<String, Integer> getNumberOfVulnerabilitiesFromDate(String date) throws ServiceException{
+        try {
+            return vulnerabilityDAO.getNumberOfVulnerabilitiesFromDate(date);
+        } catch (DAOException e){
             throw new ServiceException(e.getMessage());
         }
     }

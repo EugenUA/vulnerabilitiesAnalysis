@@ -83,6 +83,9 @@ public class WelcomePage {
                         flag = false;
                         regFlag = false;
                         System.out.println();
+                        System.out.println("During next 3 Minutes new software advisories will be aggregated.");
+                        System.out.println("The aggregation procedure repeats every 3 Minutes automatically.");
+                        System.out.println();
                         return user;
                     } else {
                         System.out.println("YOU ENTERED WRONG CREDENTIALS! TRY AGAIN!");
