@@ -1,6 +1,7 @@
 package ui;
 
 import entities.dbEntities.User;
+import jline.console.ConsoleReader;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

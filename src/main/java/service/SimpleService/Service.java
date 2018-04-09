@@ -132,8 +132,25 @@ public interface Service {
      */
     List<Vulnerability> getVulnerabilitiesBySourceType(String source_type) throws ServiceException;
 
+    /**
+     * Get number of vulnerabilities aggregated by source type
+     * @return hashmap with source type and number of vulnerabilities
+     * @throws DAOException
+     */
     HashMap<String, Integer> getNumberOfVulnerabilitiesBy() throws ServiceException;
+
+    /**
+     * Get number of vulnerabilities aggregated by source type at some given date
+     * @return hashmap with source type and number of vulnerabilities
+     * @throws DAOException
+     */
     HashMap<String, Integer> getNumberOfVulnerabilitiesByDateOne(String date) throws ServiceException;
+
+    /**
+     * Get number of vulnerabilities aggregated by source type from some given date
+     * @return hashmap with source type and number of vulnerabilities
+     * @throws DAOException
+     */
     HashMap<String, Integer> getNumberOfVulnerabilitiesFromDate(String date) throws ServiceException;
 
     /* ----------------------------------------- DESCRIPTION ----------------------------------------------- */
@@ -204,8 +221,21 @@ public interface Service {
      */
     List<Product> getProductByName(String name) throws ServiceException;
 
+    /**
+     * Return vulnerability by the name of the product
+     * @param name of the product to search
+     * @return list of vulnerabilities found in the product
+     * @throws ServiceException
+     */
     List<Vulnerability> getVulnerabilityByProductName(String name) throws ServiceException;
 
+    /**
+     * Return vulnerability by the name of the product and date
+     * @param name of the product to search
+     * @param date the date from which the search is conducted
+     * @return list of vulnerabilities found in the product
+     * @throws ServiceException
+     */
     List<Vulnerability> getVulnerabilityByProductNameAndDate(String name, String date) throws ServiceException;
 
     /* ------------------------------------- VulProd ------------------------------------------------------ */

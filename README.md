@@ -181,6 +181,9 @@ spam vector. The weight of each word is computed by use of naive
 bayes classification algorithm.
 
 ## Tests
+Package Tests include one single test which was used during the
+implementation of Text Mining procedure. This testcase shows that
+mining step is done successfully for selected advisories.
 
 # Summary and Final Notes
 To improve: products and versions
