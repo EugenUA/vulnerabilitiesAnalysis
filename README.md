@@ -156,8 +156,20 @@ classes needed for:
 In next sub-chapters all these sub-packages will be discussed in details.
 
 ### Simple Service
+Contains an interface **Service.java** which is visible from the
+UI package and the implementation of this interface **SimpleService.java**
+which has a task to bind UI command incoming from user and the database.
+This class is also used for storing received and mined security advisories
+into the database.
 
 ### Program Service
+Contains three packages with one class in each package:
+* Package **ReadPropertiesFile** contains the implementation of config.properties
+file reader. It extracts the information from that file.
+* Package **SendGreetingEmail** contains a class that sends an email to every new
+registered user.
+* Package **StemmingOfTrainingData** contains functions and methods that are needed
+to conduct stemming procedure of training data for Naive Bayes Classifier. 
 
 ### AggregateAlerts
 
@@ -190,6 +202,27 @@ we understand all the security alerts, that were published since last successful
 aggregate them.
 
 ### Text Mining
+Contains two subpackages:
+* Package **Correlation** which stores all subpackages and classes needed for
+text mining. It contains:
+    * **Preprocessing** package: the Preprocessing class that is situated in this package conducts 
+    the preprocessing step of the incoming textual data. This step includes: tokenization, removal of emails,
+    links and urls, removal of non-letter characters, folding of input to the lower case, removal of stop words, 
+    and stemming.
+    * **Classification** package: includes two classes: Classification.java and TfIdf.java. The first class creates
+    a vector space model from incoming preprocessed documents and conducts the classification step based on
+    Naive Bayes Classification algorithm with score indexes computed via TfIdf method.
+    * **SimilarityFunctions** package: consists of two classes: CosineSimilarity.java where the cosine similarity (or
+    so-called distance) function is implemented; the second class is EuclideanDistance.java where the Euclidean distance
+    function is implemented. To learn more about the cosine similarity function follow the link:https://en.wikipedia.org/wiki/Cosine_similarity
+    and to learn more about Euclidean distance function follow this link: https://en.wikipedia.org/wiki/Euclidean_distance
+    * **Clustering** package: contains the Clustering.java class. The main purpose of this class is to conduct clustering
+    using the algorithm described in details in bachelor thesis accompanying this software implementation. This class
+    uses results from previous steps and similarity functions defined in previous package.
+* Package **SaveVulnerabilities** has a class named SaveVulnerabilitiesToDB.java. The main task of this class is to construct entities
+that can be than stored in the database, containing vulnerabilities information considering the clustering results. These entities are: Vulnerability, Description and Product.
+The second important function of this class is to obtain products from advisories. Today the solution is simply delete known English words and leave
+the words that are not common. These not common words are with probability > 70% specific brands or program names.
 
 ## User Interface (UI)
 
@@ -213,4 +246,3 @@ implementation of Text Mining procedure. This testcase shows that
 mining step is done successfully for selected advisories.
 
 # Summary and Final Notes
-To improve: products and versions
