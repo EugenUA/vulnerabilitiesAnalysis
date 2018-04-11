@@ -106,6 +106,23 @@ configuration details used by Maven to build the project.
 
 # Technology Stack
 
+* Language: Java 8;
+* Operating System: Windows 10 Home x64;
+* Maven 1.6 & 1.8;
+* SQLite Database with DB Browser for SQLite. The DB Browser is available as well as standalone
+ application extension, and also as Firefox Browser Extension;
+* IntelliJ IDEA 2017.2.5 as IDE;
+* log4j 1.2.17 as LOGGER;
+* javax.mail and com.sun.mail 1.6.0 for accessing email account and reading emails;
+* Jsoup for accessing and parsing HTML Web Pages;
+* com.sun.syndication and rome 1.7.4 for accessing and parsing RSS-Feeds;
+* JDom 1.1 for manipulating XML Data
+* Apache OpenNLP (1.8.2) and Stanford NLP Package (3.5.0) for Preprocessing step;
+* Apache Lucene (7.0.0) for some tasks in Preprocessing and Classification steps;
+* com.github.chen0040 (1.0.3) is open source implementation of Naive Bayes Classifier;
+* Bouncy Castle Cryptography (1.59) for encryption of passwords;
+* JUnit (4.12) for testing.
+
 ## DAO
 This package contains all the code needed for manipulation with
 the database of all kinds. It defines the sub-package **interfaces**
@@ -127,6 +144,16 @@ for storing all relevant for data mining information and is actively
 used during the text mining.
 
 ## Service
+
+Is the core package of this software application. Service package contains all the
+classes needed for:
+ * aggregation of security advisories from all the sources;
+ * connection of the database manipulation classes with user interface, enabling the user
+   run queries on the database;
+ * normal run of the program, for example: stemming of training data; reading properties file etc.
+ * text mining with intent to find and correlate similar advisories and to delete documents which do not represent advisories;
+ 
+In next sub-chapters all these sub-packages will be discussed in details.
 
 ### Simple Service
 
