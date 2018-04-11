@@ -225,6 +225,17 @@ The second important function of this class is to obtain products from advisorie
 the words that are not common. These not common words are with probability > 70% specific brands or program names.
 
 ## User Interface (UI)
+User Interface is organized in 4 packages and one separate class:
+* Class **WelcomePage.java** defines first words that user see on the screen. It gives user the opportunity to register or
+to login if the user is already registered.
+* Package **Authentication_UpdateCredentials** contains two classes:
+    * Class **UserAuthentication.java** defines rules for registration and gives the user opportunities to input registration credentials.
+    * Class **UpdateUserCredentials.java** defines rules for updating user credentials if the user is already registered.
+* Package **UserCabinet** is main point for user to manipulate with the program. This cabinet is only reachable if the user is successfully logged in.
+From user cabinet the user can update his/her login credentials, delete his/her account, search in the vulnerabilities database by product names, vulnerabilities details, dates. The user
+can also see primitive statistics of vulnerabilities by their sources: EMAIL, RSS, HTML.
+* Package **Statistics** has the class with the same name which is intended to run the aggregation query in the database to collect information about
+number of vulnerabilities from 3 different source types.
 
 ## Resources
 The package resources contains three important files:
