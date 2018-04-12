@@ -257,3 +257,24 @@ implementation of Text Mining procedure. This testcase shows that
 mining step is done successfully for selected advisories.
 
 # Summary and Final Notes
+To sum up, it has succeeded to write a prototype of software application that is
+able to:
+* aggregate security advisories from different sources and in different formats;
+* convert security advisories to one format
+* analyse incoming security advisories for the sake of being identical or similar;
+* filter out textual documents that are not devoted to disclosure of vulnerabilities;
+* filter out textual documents that are not security advisories
+* automatically retrieve form textual data information about products, where vulnerabilities were found;
+* save this information to the database in consistent way;
+* query the database with intent of searching specific product, vulnerability or to get statistics.
+
+It is also important to speak about limitations that has this software prototype:
+* Text analysers maintain security advisories written only in English language;
+* Classification step is based on Naive Bayes Classifier which gives the correct results only in 70% of cases;
+* Software does not support correlation of already present in the database advisories with new aggregated advisories. However, the description table saves preprocessed short and long descriptions of each security advisory in the database;  
+* Aggregation of security alerts incoming from HTML Web Pages is strongly oriented on default links given in properties file. Aggregation from
+another HTML sources may need changes in the implementation because of the nature of HTML Web Pages;
+* Retrieval of product and brand names is based on deleting of known English words from texts and not on information retrieval algorithms in their pure sense;
+* Database and analytics packages do not support non textual data;
+* User interface is poor command line interface which in many cases is not optimal for software of such kind;
+* Statistics package provides very restricted statistics information and is designed to show that the statistics is possible to compute;
