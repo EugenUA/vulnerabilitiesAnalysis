@@ -86,8 +86,8 @@ logical modules. It is responsible for:
   file; sending greeting email to new users; etc.
   
 * **Presentation (UI) layer** includes all the classes and all
-the logic that is needed to present to the user the results of
-computations made in service layer and to search concrete data
+the logic that is needed to present the results of
+computations made in service layer to the user and to search concrete data
 in the database.
 
 There are also some separate folders that contain important
@@ -97,7 +97,7 @@ needs to operate with, for example database: every table in the
 database is represented by entity classes. Objects of these
 classes are then entries of the table.
 * Main class is the main control point of the whole program.
-It sets the rules of uer-program and inter-modules cooperation.
+It sets the rules of user-program and inter-modules cooperation.
 * Resources package contains properties file which specifies 
 current (variable) program options.
 * pom.xml file contains information about the project and
@@ -124,12 +124,12 @@ configuration details used by Maven to build the project.
 * JUnit (4.12) for testing.
 
 ## DAO
-This package contains all the code needed for manipulation with
-the database of all kinds. It defines the sub-package **interfaces**
-which contains the interfaces that are visible from other layers.
+This package contains all the code needed for manipulation of all kinds with
+the database. It defines the sub-package **interfaces**
+which contain the interfaces that are visible from other layers.
 In the **db** package the code for creation of tables is situated
 and in the **SQLiteWorkingPackage** the classes with basic CRUD
-operations for each table are situated.
+operations for each table are placed.
 
 This package defines its own DAOException class. 
 
@@ -148,7 +148,7 @@ used during the text mining.
 Is the core package of this software application. Service package contains all the
 classes needed for:
  * aggregation of security advisories from all the sources;
- * connection of the database manipulation classes with user interface, enabling the user
+ * connection of the database manipulation classes with user interface, enabling the user to
    run queries on the database;
  * normal run of the program, for example: stemming of training data; reading properties file etc.
  * text mining with intent to find and correlate similar advisories and to delete documents which do not represent advisories;
