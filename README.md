@@ -277,4 +277,4 @@ another HTML sources may need changes in the implementation because of the natur
 * Retrieval of product and brand names is based on deleting of known English words from texts and not on information retrieval algorithms in their pure sense;
 * Database and analytics packages do not support non textual data;
 * User interface is poor command line interface which in many cases is not optimal for software of such kind;
-* Statistics package provides very restricted statistics information and is designed to show that the statistics is possible to compute;
+* Statistics package provides very restricted statistics information and is designed to show that the statistics is possible to compute.
