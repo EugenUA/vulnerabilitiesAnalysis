@@ -13,7 +13,7 @@ import java.util.Properties;
 
 public class SendGreetingEmail {
 
-    private static final Logger logger = LogManager.getLogger(SendGreetingEmail.class);
+    private static final Logger logger = Logger.getLogger(SendGreetingEmail.class);
     GetConfigValues configValues;
     String destinationAddress = null;
     String userName = null;

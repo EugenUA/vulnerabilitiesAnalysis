@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import service.SimpleService.Service;
 import service.ServiceException;
 
+import java.io.Console;
 import java.util.Scanner;
 
 /**
@@ -14,8 +15,9 @@ import java.util.Scanner;
  */
 public class UpdateUserCredentials {
 
-    private static final Logger logger = LogManager.getLogger(UpdateUserCredentials.class);
+    private static final Logger logger = Logger.getLogger(UpdateUserCredentials.class);
 
+    private Console console;
     private User user;
     private Service service;
     private Scanner scanner;
@@ -23,6 +25,7 @@ public class UpdateUserCredentials {
     private boolean flag = true;
 
     public UpdateUserCredentials(User user, Service service){
+        this.console = System.console();
         this.user = user;
         this.service = service;
         this.scanner = new Scanner(System.in);
@@ -84,9 +87,13 @@ public class UpdateUserCredentials {
                 String newPassword = null;
                 String oldPassword = null;
                 System.out.print("ENTER YOUR OLD PASSWORD: ");
-                oldPassword = scanner.nextLine();
+                //String oldPassword = scanner.nextLine();      // <--- if you run in IDE
+                char[] oldPss = console.readPassword();         // <--- if you run in console
+                oldPassword = new String(oldPss);               // <--- if you run in console
                 System.out.print("ENTER NEW PASSWORD: ");
-                newPassword = scanner.nextLine();
+                //String newPassword = scanner.nextLine();      // <--- if you run in IDE
+                char[] newPss = console.readPassword();         // <--- if you run in console
+                newPassword = new String(newPss);               // <--- if you run in console
                 if(DigestUtils.sha256Hex(oldPassword).equals(user.getPassword())) {
                     if (newPassword != null && newPassword.length() > 0) {
                         try {

@@ -4,6 +4,7 @@ Technical University of Vienna; INSO; Essential Security; (2017 - 2018).
 Advisor: Florian Fankhauser  
 Author: Eugen Gruzdev  
 Date: 01.03.2018
+Updated: 20.05.2018
 
 # Brief Description and Foundations
 Vulnerability Aggregation and Analysis Software is
@@ -96,7 +97,7 @@ program parts:
 needs to operate with, for example database: every table in the
 database is represented by entity classes. Objects of these
 classes are then entries of the table.
-* Main class is the main control point of the whole program.
+* vlnAggr class is the main control point of the whole program.
 It sets the rules of user-program and inter-modules cooperation.
 * Resources package contains properties file which specifies 
 current (variable) program options.
@@ -165,7 +166,8 @@ into the database.
 ### Program Service
 Contains three packages with one class in each package:
 * Package **ReadPropertiesFile** contains the implementation of config.properties
-file reader. It extracts the information from that file.
+file reader. It extracts the information from that file. To be able to read html and rss sources
+it also reads rss.txt and html.txt files. They contain the links to the respective sources.
 * Package **SendGreetingEmail** contains a class that sends an email to every new
 registered user.
 * Package **StemmingOfTrainingData** contains functions and methods that are needed
@@ -243,18 +245,64 @@ The package resources contains three important files:
 of the program, such as: email account credentials; links to rss-feeds
 and html web pages where the advisories come from.
 
+* **rss.txt** and **html.txt** are two text files that store current links to the
+vulnerabilities sources incoming from RSS and from HTML respectively. 
+
 * **nonspamVector** und **spamVector**. For the classification part we use
 the so-called nonspamVector and spamVector. Each vector is a dictionary with
 words and their weights. The words in each dictionary are specifically
 selected, such that the words in nonspamVector are often observed in
 non-spam messages, and the words in spamVector are more often observed in
 spam vector. The weight of each word is computed by use of naive
-bayes classification algorithm.
+bayes classification algorithm. Link to the original source of spam/nonspam Vectors:
+http://openclassroom.stanford.edu/MainFolder/DocumentPage.php?course=MachineLearning&doc=exercises/ex6/ex6.html (visited on: 20.05.2018)
+Attention! The spam and nonspam Vectors used in this work are not 100% equal with original files. Vectors
+used in this work are modified to fit the topic of this work and to classify security relevant document more precisely.
 
 ## Tests
 Package Tests include one single test which was used during the
 implementation of Text Mining procedure. This testcase shows that
 mining step is done successfully for selected advisories.
+
+# How to run a program from console?
+To run a program one needs to install maven. The detailed explanation how to do this is available here:
+https://maven.apache.org/install.html (visited on: 20.05.2018)
+
+After the successful installation make the following steps:
+1. Unzip the archive with the vulnerability aggregation and analysis software and store "vulnerabilitiesAnalysis" package somewhere on your PC;
+2. Open your command line terminal;
+3. In opened terminal navigate to "vulnerabilitiesAnalysis" package;
+4. Type the following line and press Enter: **mvn compile**;
+5. Wait until you see **BUILD SUCCESS** words returning after the compilation;
+6. Type the following line and press Enter: **mvn exec:java -Dexec.mainClass=vlnAggr**;
+7. After some INFOs and/or WARNINGs you'll be able to login into the program.
+8. DEFAULT CREDENTIALS: Login: **Eugen**; Password: **1234**;
+9. To quit the program, press "q" or "Q";
+10. After finishing your work close the terminal.
+
+# How to run a program from IDE?
+To run a program from IDE, please notice, that to be able to enter the credentials from IDE console you need to change following lines:
+````
+//String password = scanner.nextLine();      // <--- if you run in IDE
+  char[] pss = console.readPassword();         // <--- if you run in console
+  String password = new String(pss);           // <--- if you run in console
+````
+You need to comment lines 2 and 3 and to uncomment line 1 on the following positions in code:
+* In class **WelcomePage.java** lines: 83-85;
+* In class **UpdateUserCredentials.java** lines: 90-92; 94-96;
+* In class **UserAuthentication.java** lines: 38-40; 42-44;
+
+To run the program in Eclipse/NetBeans/Intellij IDEs you need:
+1. Unzip the archive with the vulnerability aggregation and analysis software and store "vulnerabilitiesAnalysis" package somewhere on your PC;
+2. Open the IDE;
+3. In menu tab **File** select **Open Existing Project**/**Open**;
+4. Navigate to the "vulnerabilitiesAnalysis" package;
+5. Select this package and confirm your selection; 
+6. Make changes to the classes discussed above;
+7. Import maven changes, if the IDE does not make it automatically;
+8. Run the project's main file called **vlnAggr** using the IDE's run button;
+9. To quit the program, press "q" or "Q";
+10. After finishing your work close the IDE.
 
 # Summary and Final Notes
 To sum up, it has succeeded to write a prototype of software application that is

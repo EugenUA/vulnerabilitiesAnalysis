@@ -24,7 +24,7 @@ import java.util.*;
 
 public class ParseRSS {
 
-    private final static Logger logger = LogManager.getLogger(ParseRSS.class);
+    private final static Logger logger = Logger.getLogger(ParseRSS.class);
     private ArrayList<RSS> rssAlerts= new ArrayList<RSS>();
     private GetConfigValues configValues = new GetConfigValues();
     private SimpleService service;
@@ -58,13 +58,13 @@ public class ParseRSS {
             if(service.getVulnerabilitySourceByLink(eachSource) == null){
 
                 /* SET SOURCE NAME BY DEFAULT ADVISORIES */
-                if(eachSource.contains("us-cert")){
+                /*if(eachSource.contains("us-cert")){
                     sourceDB.setSource_name("US CERT Security Alerts");
                 } else if(eachSource.contains("seclists")) {
                     sourceDB.setSource_name("Security List");
                 } else if(eachSource.contains("cisco")){
                     sourceDB.setSource_name("Cisco Security Advisories");
-                }
+                }*/
 
                 sourceDB.setLink(eachSource);
                 sourceDB.setSource_type("RSS");

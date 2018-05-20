@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class SQLiteDescriptionDAO implements DescriptionDAO {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteVulnerabilityDAO.class);
+    private static final Logger logger = Logger.getLogger(SQLiteVulnerabilityDAO.class);
     private Connection con = null;
 
     public SQLiteDescriptionDAO() throws DAOException {

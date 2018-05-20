@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 public class SQLiteCreate_Vulnerabilities_Table {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteCreate_Vulnerabilities_Table.class);
+    private static final Logger logger = Logger.getLogger(SQLiteCreate_Vulnerabilities_Table.class);
     Connection con = null;
     Statement stmt = null;
 

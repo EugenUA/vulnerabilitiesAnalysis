@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class SQLiteCreate_VulnerabilitiesSources_Table {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteCreate_VulnerabilitiesSources_Table.class);
+    private static final Logger logger = Logger.getLogger(SQLiteCreate_VulnerabilitiesSources_Table.class);
     Connection con = null;
     Statement stmt = null;
 

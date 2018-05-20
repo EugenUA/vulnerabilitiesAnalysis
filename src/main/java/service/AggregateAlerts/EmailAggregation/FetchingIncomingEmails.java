@@ -16,7 +16,7 @@ import java.util.Properties;
 
 public class FetchingIncomingEmails {
 
-    private static final Logger logger = LogManager.getLogger(FetchingIncomingEmails.class);
+    private static final Logger logger = Logger.getLogger(FetchingIncomingEmails.class);
 
     private ArrayList<Email> incomingEmails = new ArrayList<Email>();
     private GetConfigValues configValues = new GetConfigValues();
@@ -108,7 +108,7 @@ public class FetchingIncomingEmails {
             writePart((Part) p.getContent(), email);
         }
         else if (p.getContentType().contains("image/")) {
-            System.out.println("content type" + p.getContentType());
+            //System.out.println("content type" + p.getContentType());
             File f = new File("image" + new Date().getTime() + ".jpg");
             DataOutputStream output = new DataOutputStream(
                     new BufferedOutputStream(new FileOutputStream(f)));

@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class AggregationMainEntrance {
 
-    public static final Logger logger = LogManager.getLogger(AggregationMainEntrance.class);
+    public static final Logger logger = Logger.getLogger(AggregationMainEntrance.class);
 
     /* Aggregated Advisories Storage */
     private ArrayList<Email> receivedEmails;

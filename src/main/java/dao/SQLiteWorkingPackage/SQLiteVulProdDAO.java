@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class SQLiteVulProdDAO implements VulProdDAO {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteVulnerabilityDAO.class);
+    private static final Logger logger = Logger.getLogger(SQLiteVulnerabilityDAO.class);
     private Connection con = null;
 
     public SQLiteVulProdDAO() throws DAOException {

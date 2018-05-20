@@ -16,7 +16,7 @@ import java.util.Scanner;
  */
 public class UserCabinet {
 
-    private static final Logger logger = LogManager.getLogger(WelcomePage.class);
+    private static final Logger logger = Logger.getLogger(WelcomePage.class);
 
     private User user;
     private Service service;

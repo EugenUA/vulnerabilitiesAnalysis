@@ -18,6 +18,7 @@ import java.util.Scanner;
  */
 public class WelcomePage {
 
+    private Console console;
     private Scanner scanner;
     private Service service;
     private String key;
@@ -28,9 +29,10 @@ public class WelcomePage {
 
     private SendGreetingEmail sendEmail;
 
-    private static final Logger logger = LogManager.getLogger(WelcomePage.class);
+    private static final Logger logger = Logger.getLogger(WelcomePage.class);
 
     public WelcomePage(Service service){
+        console = System.console();
         scanner = new Scanner(System.in);
         this.service = service;
         ua = new UserAuthentication();
@@ -78,7 +80,9 @@ public class WelcomePage {
                 System.out.print("ENTER YOUR NAME: ");
                 String name = scanner.nextLine();
                 System.out.print("ENTER YOUR PASSWORD: ");
-                String password = scanner.nextLine();
+                //String password = scanner.nextLine();      // <--- if you run in IDE
+                char[] pss = console.readPassword();         // <--- if you run in console
+                String password = new String(pss);           // <--- if you run in console
                 try{
                     user = this.service.selectUser(name, DigestUtils.sha256Hex(password));
                     if(user != null){

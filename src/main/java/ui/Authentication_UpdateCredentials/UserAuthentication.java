@@ -35,9 +35,13 @@ public class UserAuthentication {
         System.out.print("ENTER YOUR E-MAIL: ");
         email = scanner.nextLine();
         System.out.print("ENTER YOUR SECRET PASSWORD: ");
-        password1 = scanner.nextLine();
+        //String password1 = scanner.nextLine();      // <--- if you run in IDE
+        char[] pss1 = console.readPassword();         // <--- if you run in console
+        password1 = new String(pss1);                 // <--- if you run in console
         System.out.print("CONFIRM YOUR PASSWORD: ");
-        password2 = scanner.nextLine();
+        //String password2 = scanner.nextLine();      // <--- if you run in IDE
+        char[] pss2 = console.readPassword();         // <--- if you run in console
+        password2 = new String(pss2);                 // <--- if you run in console
 
         if(name != null && password1 != null && password2 != null && email != null &&
                 name.length()>0 && password1.length()>0 && password2.length()>0 && email.length()>0){

@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class SaveVulnerabilitiesToDB {
 
-    private final static Logger logger = LogManager.getLogger(SaveVulnerabilitiesToDB.class);
+    private final static Logger logger = Logger.getLogger(SaveVulnerabilitiesToDB.class);
     private ArrayList<MiningEntity> miningEntities;
     private ArrayList<ArrayList<Integer>> internalClusters;
 

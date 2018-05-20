@@ -1,0 +1,2 @@
+https://www.freebsd.org/security/advisories.html
+https://secuniaresearch.flexerasoftware.com/community/research/

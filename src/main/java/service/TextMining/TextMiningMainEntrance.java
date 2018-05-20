@@ -21,7 +21,7 @@ import service.TextMining.SaveVulnerabilities.SaveVulnerabilitiesToDB;
 
 public class TextMiningMainEntrance {
 
-    private static final Logger logger = LogManager.getLogger(TextMiningMainEntrance.class);
+    private static final Logger logger = Logger.getLogger(TextMiningMainEntrance.class);
 
     /* RECEIVED ADVISORIES FROM ALL THE SOURCES */
     private ArrayList<Email> receivedEmails;

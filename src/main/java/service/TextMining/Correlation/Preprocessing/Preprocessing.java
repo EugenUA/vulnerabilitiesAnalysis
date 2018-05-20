@@ -12,7 +12,7 @@ import java.util.Arrays;
 
 public class Preprocessing {
 
-    private static final Logger logger = LogManager.getLogger(Preprocessing.class);
+    private static final Logger logger = Logger.getLogger(Preprocessing.class);
     private ArrayList<MiningEntity> miningEntities;
 
     public Preprocessing(ArrayList<MiningEntity> miningEntities){

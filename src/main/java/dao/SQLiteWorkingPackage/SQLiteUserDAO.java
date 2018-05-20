@@ -14,7 +14,7 @@ import java.sql.*;
  */
 public class SQLiteUserDAO implements UserDAO {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteUserDAO.class);
+    private static final Logger logger = Logger.getLogger(SQLiteUserDAO.class);
     private Connection con = null;
 
 

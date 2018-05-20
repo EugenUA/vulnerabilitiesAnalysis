@@ -22,7 +22,7 @@ import java.util.Date;
 
 public class ParseHTML {
 
-    private static final Logger logger = LogManager.getLogger(ParseHTML.class);
+    private static final Logger logger = Logger.getLogger(ParseHTML.class);
     private ArrayList<HTML> htmlAlerts = new ArrayList<HTML>();
     private GetConfigValues configValues = new GetConfigValues();
     private String[] htmlSources;
@@ -57,11 +57,11 @@ public class ParseHTML {
 
                     sourceDB.setLink(eachSource);
 
-                    if(eachSource.contains("freebsd")){
+                   /* if(eachSource.contains("freebsd")){
                         sourceDB.setSource_name("FreeBSD");
                     } else if(eachSource.contains("secuniaresearch")){
                         sourceDB.setSource_name("Secunia Research");
-                    }
+                    }*/
 
                     sourceDB.setSource_type("HTML");
 

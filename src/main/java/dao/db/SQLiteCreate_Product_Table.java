@@ -13,7 +13,7 @@ import java.sql.Statement;
  */
 public class SQLiteCreate_Product_Table {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteCreate_Product_Table.class);
+    private static final Logger logger = Logger.getLogger(SQLiteCreate_Product_Table.class);
     private Connection con;
     private Statement stmt;
 

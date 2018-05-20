@@ -14,7 +14,7 @@ import java.util.List;
 
 public class SimpleService implements Service {
 
-    private static final Logger logger = LogManager.getLogger(SimpleService.class);
+    private static final Logger logger = Logger.getLogger(SimpleService.class);
     private UserDAO userDAO;
     private VulnerabilityDAO vulnerabilityDAO;
     private DescriptionDAO descriptionDAO;

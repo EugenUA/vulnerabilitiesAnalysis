@@ -14,7 +14,7 @@ import org.apache.log4j.LogManager;
  */
 public class SQLiteCreate_User_Table {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteCreate_User_Table.class);
+    private static final Logger logger = Logger.getLogger(SQLiteCreate_User_Table.class);
     Connection con = null;
     Statement stmt = null;
 

@@ -18,7 +18,7 @@ import java.util.List;
 public class SQLiteProductDAO implements ProductDAO {
 
 
-    private static final Logger logger = LogManager.getLogger(SQLiteVulnerabilityDAO.class);
+    private static final Logger logger = Logger.getLogger(SQLiteVulnerabilityDAO.class);
     private Connection con = null;
 
     public SQLiteProductDAO() throws DAOException {

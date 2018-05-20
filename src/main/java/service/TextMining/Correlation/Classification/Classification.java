@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Classification {
 
-    private static final Logger logger = LogManager.getLogger(Classification.class);
+    private static final Logger logger = Logger.getLogger(Classification.class);
     private ArrayList<MiningEntity> miningEntities;
 
     private List<String[]> short_description_array; // all terms of each document (short)

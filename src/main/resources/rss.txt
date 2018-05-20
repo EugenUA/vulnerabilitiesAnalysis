@@ -1,0 +1,3 @@
+https://www.us-cert.gov/ncas/alerts.xml
+https://tools.cisco.com/security/center/psirtrss20/CiscoSecurityAdvisory.xml
+http://seclists.org/rss/bugtraq.rss

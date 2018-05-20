@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Clustering {
 
-    private final static Logger logger = LogManager.getLogger(Clustering.class);
+    private final static Logger logger = Logger.getLogger(Clustering.class);
     private ArrayList<MiningEntity> miningEntities;
     private ArrayList<ArrayList<Integer>> internalClusters;
 

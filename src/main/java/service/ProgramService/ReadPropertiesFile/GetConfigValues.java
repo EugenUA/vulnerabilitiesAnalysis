@@ -1,13 +1,16 @@
 package service.ProgramService.ReadPropertiesFile;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class GetConfigValues {
 
     private InputStream inputStream;
+    private Reader reader;
+    private BufferedReader bufferedReader;
 
     private String email;
     private String password;
@@ -16,8 +19,6 @@ public class GetConfigValues {
     private String storeProtocol;
     private String pop3SPort;
 
-    private String rssSourcesNumber;
-    private String htmlSourcesNumber;
     private String[] rssSources;
     private String[] htmlSources;
 
@@ -41,19 +42,42 @@ public class GetConfigValues {
             email = prop.getProperty("email");
             password = prop.getProperty("password");
 
-            int rssNumber = Integer.parseInt(prop.getProperty("rssSourcesNumber"));
-            int htmlNumber = Integer.parseInt(prop.getProperty("htmlSourcesNumber"));
 
-            rssSources = new String[rssNumber];
-            htmlSources = new String[htmlNumber];
+            String filePathRSS = "src/main/resources/rss.txt";
+            Path path = Paths.get(filePathRSS);
+            long rssNumber = Files.lines(path).count();
+            rssSources = new String[Math.toIntExact(rssNumber)];
 
-            for(int i=0;i<rssNumber;i++) {
-                rssSources[i] = prop.getProperty("rssSource[" + i + "]");
+            /* Reading rss file */
+            String url;
+            int counter = 0;
+            inputStream = new FileInputStream(filePathRSS);
+            reader = new InputStreamReader(inputStream, "UTF-8");
+            bufferedReader = new BufferedReader(reader);
+            while((url = bufferedReader.readLine()) != null){
+                if(url != null || !url.equals("") || !url.equals(" ")) {
+                    rssSources[counter] = url;
+                    counter++;
+                }
             }
 
-            for(int i = 0; i < htmlNumber; i++){
-                htmlSources[i] = prop.getProperty("htmlSource[" + i + "]");
+            String filePathHTML = "src/main/resources/html.txt";
+            Path pathHTML = Paths.get(filePathHTML);
+            long htmlNumber = Files.lines(pathHTML).count();
+            htmlSources = new String[Math.toIntExact(htmlNumber)];
+
+            /* Reading rss file */
+            counter = 0;
+            inputStream = new FileInputStream(filePathHTML);
+            reader = new InputStreamReader(inputStream, "UTF-8");
+            bufferedReader = new BufferedReader(reader);
+            while((url = bufferedReader.readLine()) != null){
+                if(url != null || !url.equals("") || !url.equals(" ")) {
+                    htmlSources[counter] = url;
+                    counter++;
+                }
             }
+
 
         } finally {
             inputStream.close();
@@ -90,13 +114,5 @@ public class GetConfigValues {
 
     public String[] getHtmlSources() {
         return htmlSources;
-    }
-
-    public String getRssSourcesNumber() {
-        return rssSourcesNumber;
-    }
-
-    public String getHtmlSourcesNumber() {
-        return htmlSourcesNumber;
     }
 }

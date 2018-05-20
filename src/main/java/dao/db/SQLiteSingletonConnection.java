@@ -17,9 +17,10 @@ import java.sql.*;
  */
 public class SQLiteSingletonConnection {
 
+    private static final Logger logger = Logger.getLogger(SQLiteSingletonConnection.class);
+
     private static Connection con = null;
     private Statement statement = null;
-    private static final Logger logger = LogManager.getLogger(SQLiteSingletonConnection.class);
 
     private SQLiteCreate_User_Table createUserTable;
     private SQLiteCreate_Vulnerabilities_Table createVulnerabilitiesTable;

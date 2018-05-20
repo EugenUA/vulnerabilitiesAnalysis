@@ -10,7 +10,7 @@ import java.sql.Statement;
 
 public class SQLiteCreate_VulProd_Table {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteCreate_VulProd_Table.class);
+    private static final Logger logger = Logger.getLogger(SQLiteCreate_VulProd_Table.class);
     private Connection con;
     private Statement stmt;
 

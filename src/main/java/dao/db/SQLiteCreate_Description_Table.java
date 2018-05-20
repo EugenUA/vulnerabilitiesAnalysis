@@ -1,7 +1,6 @@
 package dao.db;
 
 import dao.DAOException;
-import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -13,7 +12,7 @@ import java.sql.Statement;
  */
 public class SQLiteCreate_Description_Table {
 
-    private static final Logger logger = LogManager.getLogger(SQLiteCreate_Description_Table.class);
+    private static final Logger logger = Logger.getLogger(SQLiteCreate_Description_Table.class);
     private Connection con = null;
     private Statement stmt = null;
 
