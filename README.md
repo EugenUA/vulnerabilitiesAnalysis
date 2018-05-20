@@ -3,7 +3,8 @@ Implemented as part of Bachelor thesis "Aggregation and Analysis of IT Security 
 Technical University of Vienna; INSO; Essential Security; (2017 - 2018).  
 Advisor: Florian Fankhauser  
 Author: Eugen Gruzdev  
-Date: 01.03.2018
+Date: 01.03.2018 
+
 Updated: 20.05.2018
 
 # Brief Description and Foundations
@@ -216,8 +217,8 @@ text mining. It contains:
     Naive Bayes Classification algorithm with score indexes computed via TfIdf method.
     * **SimilarityFunctions** package: consists of two classes: CosineSimilarity.java where the cosine similarity (or
     so-called distance) function is implemented; the second class is EuclideanDistance.java where the Euclidean distance
-    function is implemented. To learn more about the cosine similarity function follow the link:https://en.wikipedia.org/wiki/Cosine_similarity
-    and to learn more about Euclidean distance function follow this link: https://en.wikipedia.org/wiki/Euclidean_distance
+    function is implemented. To learn more about the cosine similarity function follow the link:https://en.wikipedia.org/wiki/Cosine_similarity (visited on: 20.05.2018)
+    and to learn more about Euclidean distance function follow this link: https://en.wikipedia.org/wiki/Euclidean_distance (visited on: 20.05.2018)
     * **Clustering** package: contains the Clustering.java class. The main purpose of this class is to conduct clustering
     using the algorithm described in details in bachelor thesis accompanying this software implementation. This class
     uses results from previous steps and similarity functions defined in previous package.
@@ -284,8 +285,8 @@ After the successful installation make the following steps:
 To run a program from IDE, please notice, that to be able to enter the credentials from IDE console you need to change following lines:
 ````
 //String password = scanner.nextLine();      // <--- if you run in IDE
-  char[] pss = console.readPassword();         // <--- if you run in console
-  String password = new String(pss);           // <--- if you run in console
+  char[] pss = console.readPassword();       // <--- if you run in console
+  String password = new String(pss);         // <--- if you run in console
 ````
 You need to comment lines 2 and 3 and to uncomment line 1 on the following positions in code:
 * In class **WelcomePage.java** lines: 83-85;

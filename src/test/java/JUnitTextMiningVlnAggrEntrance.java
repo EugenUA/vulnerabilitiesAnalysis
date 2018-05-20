@@ -7,7 +7,7 @@ import service.TextMining.TextMiningMainEntrance;
 
 import java.util.ArrayList;
 
-public class JUnitTextMiningMainEntrance {
+public class JUnitTextMiningVlnAggrEntrance {
 
     public Email vmWareEmail = new Email();
     public Email debianEmail = new Email();
