@@ -187,11 +187,16 @@ writing this  emails into a special format (defined in aggregationEntities packa
 * **HTML Aggregation Package** contains a class **ParseHTML.java** which is used
 for reading web pages using JSOUP library. This class is responsible for
 reading document in HTML format and for preliminary modifications of the initial 
-content of security alerts.
+content of security alerts. For now only the sources specified in htmlSources.txt are accepted. Because
+of the fact that different publishers disclose advisories in different ways (i.e.: as links to HTML page with concrete advisory,
+as plain text in HTML tags, as text without HTML tags, as PGP-Signed Messages, etc.) each new source must be configured in
+**ParseHTML.java** individually.
 * **RSS Aggregation Package** contains a class **ParseRSS.java** which is used 
 for reading RSS-Feeds using sun.syndication library. This class is responsible for
-reading and parsing RSS-Feeds and performs modifications of intitial
-content of security alerts.
+reading and parsing RSS-Feeds and performs modifications of initial
+content of security alerts. Only the RSSs where the information about vulnerabilities is provided in
+plain text can now be aggregated. If the RSS-Feed contains links to vulnerabilities description, then some changes
+must be made to **ParseRSS.java**
 * **AggregationMainEntrance.java** is the main control point
 of the aggregation procedure. This class defines lists of
 incoming alerts from all the sources and calls each package
@@ -219,6 +224,8 @@ text mining. It contains:
     so-called distance) function is implemented; the second class is EuclideanDistance.java where the Euclidean distance
     function is implemented. To learn more about the cosine similarity function follow the link:https://en.wikipedia.org/wiki/Cosine_similarity (visited on: 20.05.2018)
     and to learn more about Euclidean distance function follow this link: https://en.wikipedia.org/wiki/Euclidean_distance (visited on: 20.05.2018)
+    Attention! Per default the program uses **Cosine Similarity function**, but eventually it can also accept another functions. To change the
+    similarity function there is a need to modify line 94 of **Clustering.java** class.
     * **Clustering** package: contains the Clustering.java class. The main purpose of this class is to conduct clustering
     using the algorithm described in details in bachelor thesis accompanying this software implementation. This class
     uses results from previous steps and similarity functions defined in previous package.
